@@ -134,32 +134,28 @@ _Note: Must Replace `lazyVideo` with your [ref](https://v3.vuejs.org/guide/compo
 
 ### Example
 
-```javascript
+```html
+<script setup>
+  const lazyVideo = ref()
+
+  const handleClick = (event) => {
+    lazyVideo.value[event]()
+  }
+</script>
+
 <template>
+  <div>
     <LazyYoutube
-        ref="lazyVideo"
-        src="https://www.youtube.com/watch?v=TcMBFSGVi1c"
+            ref="lazyVideo"
+            src="https://www.youtube.com/embed/KfYkzXTut1Y"
     />
 
-    <button
-    @click="handleClick('playVideo')">Play
-</button>
-<button @click = "handleClick('stopVideo')" > Stop < /button>
-<button @click = "handleClick('pauseVideo')" > Pause < /button>
-<button @click = "handleClick('resetView')" > Reset < /button>
+    <button @click="handleClick('playVideo')">Play</button>
+    <button @click="handleClick('stopVideo')"> Stop</button>
+    <button @click="handleClick('pauseVideo')"> Pause</button>
+    <button @click="handleClick('resetView')"> Reset</button>
+  </div>
 </template>
-
-<script>
-    export default {
-    name: "YourComponent",
-    components: {},
-    methods: {
-    handleClick(event) {
-    this.$refs["lazyVideo"][event]();
-},
-},
-};
-</script>
 ```
 
 ## ⚖️ License
