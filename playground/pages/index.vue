@@ -1,15 +1,21 @@
 <script setup>
 import LazyYoutube from '../../src/runtime/LazyYoutube.vue'
 import LazyVimeo from "../../src/runtime/LazyVimeo.vue"
+import * as events from "events";
 
 const youtubeLazyVideo = ref()
+const vimeoLazyVideo = ref()
 
 const youtubeLink = ref('https://www.youtube.com/embed/_THZZFN4SYc')
 const vimeoLink = ref('https://player.vimeo.com/video/125683400')
 
 
-const handleClick = (event, ref) => {
-  console.log(youtubeLazyVideo)
+const handleClickTube = (event) => {
+  youtubeLazyVideo.value[event]()
+}
+const handleClickVimeo = (event) => {
+  console.log(vimeoLazyVideo)
+  vimeoLazyVideo.value[event]()
 }
 const handleSearch = (e, platform) => {
   if (platform === 'youtube')
@@ -43,10 +49,10 @@ const handleSearch = (e, platform) => {
 
 
     <div class="buttons">
-      <button @click="handleClick('playVideo', 'vimeoLazyVideo')">Play</button>
-      <button @click="handleClick('stopVideo', 'vimeoLazyVideo')">Stop</button>
-      <button @click="handleClick('pauseVideo', 'vimeoLazyVideo')">Pause</button>
-      <button @click="handleClick('resetView', 'vimeoLazyVideo')">Reset</button>
+      <button @click="handleClickVimeo('playVideo')">Play</button>
+      <button @click="handleClickVimeo('stopVideo')">Stop</button>
+      <button @click="handleClickVimeo('pauseVideo')">Pause</button>
+      <button @click="handleClickVimeo('resetView')">Reset</button>
     </div>
 
     <h2>Youtube Lazy Video</h2>
@@ -60,13 +66,14 @@ const handleSearch = (e, platform) => {
         max-width="720px"
         aspect-ratio="16:9"
         thumbnail-quality="standard"
+        @iterated="handleClick"
     />
 
     <div class="buttons">
-      <button @click="handleClick('playVideo')">Play</button>
-      <button @click="handleClick('stopVideo')">Stop</button>
-      <button @click="handleClick('pauseVideo')">Pause</button>
-      <button @click="handleClick('resetView')">Reset</button>
+      <button @click="handleClickTube('playVideo')">Play</button>
+      <button @click="handleClickTube('stopVideo')">Stop</button>
+      <button @click="handleClickTube('pauseVideo')">Pause</button>
+      <button @click="handleClickTube('resetView')">Reset</button>
     </div>
 
 

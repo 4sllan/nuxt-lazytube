@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import {ref, onMounted, watch} from 'vue'
+import {ref, onMounted, watch, defineProps, computed, defineExpose} from 'vue'
 // Importing Components
 import VideoWrapper from './common/Wrapper.vue'
 import Preview from './common/Preview.vue'
@@ -113,12 +113,12 @@ const getTitle = computed(() => {
 })
 
 const initLib = ({el, ctx}) => {
-  VNodes.value = ctx.vnode.el
+  VNodes.value = ctx.vnode.el;
 }
 const resetView = () => {
   if (iframeEl.value !== null) {
     // Removing form dom
-    iframeEl.remove()
+    iframeEl.value.remove()
 
     // Resetting the states
     iframeEl.value = null
@@ -238,5 +238,12 @@ watch(props.src, async (val, oldVal) => {
     resetState();
     getFetchingOembed()
   }
+})
+
+defineExpose({
+  pauseVideo,
+  playVideo,
+  stopVideo,
+  resetView
 })
 </script>

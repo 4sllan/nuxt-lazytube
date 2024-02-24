@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import {ref, onMounted, watch, computed} from 'vue'
+import {ref, onMounted, watch, defineProps, computed, defineExpose} from 'vue'
 // Importing Components
 import VideoWrapper from './common/Wrapper.vue'
 import Preview from './common/Preview.vue'
@@ -177,7 +177,7 @@ const playVideo = () => {
     return
   }
 
-  if (this.iframeEl === null) {
+  if (iframeEl.value === null) {
     initiateIframe(props.autoplay, 'vimeo')
   } else {
     iframeEl.value.contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*')
@@ -239,5 +239,12 @@ watch(props.src, async (val, oldVal) => {
     resetState();
     getFetchingOembed()
   }
+})
+
+defineExpose({
+  pauseVideo,
+  playVideo,
+  stopVideo,
+  resetView
 })
 </script>
