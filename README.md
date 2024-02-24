@@ -1,6 +1,6 @@
 <div align="center">
-<img src=".github/six-dropzone.svg" width="400">
-<p align="center">6 Dropzone support for Nuxt 3</p>
+<img src=".github/nuxt-lazytube.svg" width="400">
+<p align="center">Nuxt Lazytube support for Nuxt 3</p>
 </div>
 
 
