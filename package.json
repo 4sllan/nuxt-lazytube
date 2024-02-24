@@ -1,9 +1,21 @@
 {
   "name": "nuxt-lazytube",
   "version": "0.1.0",
-  "description": "Nuxt.js 3 Dropzone",
-  "repository": "https://github.com/4sllan/six-dropzone",
+  "description": "Nuxt.js 3 nuxt-lazytube",
+  "repository": "https://github.com/4sllan/nuxt-lazytube",
   "author": "Aslan Gama <@4slan>",
+  "keywords": [
+    "youtube",
+    "youtube-video",
+    "vimeo",
+    "lazyload",
+    "vue",
+    "vuejs",
+    "iframe",
+    "lazytube",
+    "plugin",
+    "Nuxt.js 3"
+  ],
   "license": "MIT",
   "type": "module",
   "exports": {
