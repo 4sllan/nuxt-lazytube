@@ -1,6 +1,6 @@
 <script setup>
-import LazyYoutube from '~/components/vue-lazytube/LazyYoutube'
-import LazyVimeo from "~/components/vue-lazytube/LazyVimeo"
+import LazyYoutube from '../../src/runtime/LazyYoutube.vue'
+import LazyVimeo from "../../src/runtime/LazyVimeo.vue"
 
 const youtubeLazyVideo = ref()
 
