@@ -9,7 +9,7 @@ const vimeoLink = ref('https://player.vimeo.com/video/125683400')
 
 
 const handleClick = (event, ref) => {
-  youtubeLazyVideo[event]()
+  console.log(youtubeLazyVideo)
 }
 const handleSearch = (e, platform) => {
   if (platform === 'youtube')

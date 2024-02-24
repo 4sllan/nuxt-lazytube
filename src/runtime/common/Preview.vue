@@ -69,7 +69,10 @@ const defaultThumbnail = computed(() => {
 </script>
 
 <template>
-  <a class="vlt-preview" @click="$emit('click')">
+  <a class="vlt-preview"
+     @click="$emit('click')"
+  >
+    {{onceLoaded}}
     <template v-if="!onceLoaded">
       <template v-if="isVideoFound ">
         <img v-if="isCustomThumbnailExist" :src="customThumbnail" :alt="'Video - ' + videoTitle"
@@ -151,6 +154,7 @@ const defaultThumbnail = computed(() => {
   width: 100%;
   cursor: pointer;
   position: absolute;
+  box-sizing: border-box;
   top: 0;
 
   img {
@@ -303,6 +307,9 @@ const defaultThumbnail = computed(() => {
       transform: rotate(360deg);
     }
   }
+}
+.vlt-preview__hidden{
+  display: none;
 }
 
 .vlt-preview::after {
