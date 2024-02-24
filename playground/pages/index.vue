@@ -5,7 +5,8 @@ import LazyVimeo from "../../src/runtime/LazyVimeo.vue"
 const youtubeLazyVideo = ref()
 
 const youtubeLink = ref('https://www.youtube.com/embed/_THZZFN4SYc')
-const vimeoLink = ref('https://player.vimeo.com/video/64654583')
+const vimeoLink = ref('https://player.vimeo.com/video/125683400')
+
 
 const handleClick = (event, ref) => {
   youtubeLazyVideo[event]()
@@ -26,7 +27,7 @@ const handleSearch = (e, platform) => {
            :value="vimeoLink">
 
     <LazyVimeo ref="vimeoLazyVideo"
-               src="https://player.vimeo.com/video/64654583"
+               :src="vimeoLink"
                max-width="720px"
                aspect-ratio="16:9"
                thumbnail-quality="standard">
