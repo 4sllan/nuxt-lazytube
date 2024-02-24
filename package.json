@@ -1,7 +1,7 @@
 {
   "name": "nuxt-lazytube",
   "version": "0.1.0",
-  "description": "Nuxt.js 3 lazytube",
+  "description": "Nuxt.js 3 Dropzone",
   "repository": "https://github.com/4sllan/six-dropzone",
   "author": "Aslan Gama <@4slan>",
   "license": "MIT",
