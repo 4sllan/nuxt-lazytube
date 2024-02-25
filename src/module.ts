@@ -33,14 +33,14 @@ export default defineNuxtModule<ModuleOptions>({
             filePath: resolve(`./runtime/LazyYoutube.vue`),
             pascalName: "LazyYoutube",
             global: true,
-            mode: 'all',
+            mode: 'client',
         })
         addComponent({
             name: "lazy-vimeo",
             filePath: resolve(`./runtime/LazyVimeo.vue`),
             pascalName: "LazyVimeo",
             global: true,
-            mode: 'all',
+            mode: 'client',
         })
     }
 })
