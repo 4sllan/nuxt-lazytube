@@ -37,8 +37,7 @@ For a simple example page with 10 videos, vue-lazytube will reduce loadtime by 7
     * [Slots](#slots)
     * [Methods](#methods)
     * [Example](#example)
-- [License](#open-source-license)
-- [Buy Me a Coffee](#buy-me-a-coffee)
+
 
 ## Features
 
