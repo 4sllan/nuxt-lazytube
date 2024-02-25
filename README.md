@@ -29,8 +29,6 @@ For a simple example page with 10 videos, vue-lazytube will reduce loadtime by 7
 - [Features](#features)
 - [Demo](#demo)
 - [Installation](#installation)
-    * [Install Globally](#to-make-the-plugin-available-globally)
-    * [Install Locally](#to-include-only-in-specific-components)
 - [Usage](#usage)
 - [API](#api)
     * [Props](#props)
