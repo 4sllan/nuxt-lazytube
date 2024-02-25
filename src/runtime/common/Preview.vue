@@ -1,4 +1,6 @@
 <script setup>
+import {computed} from 'vue'
+
 import {getVimeoThumbnail, getYoutubeThumbnail} from "../utils";
 
 const props = defineProps({

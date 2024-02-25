@@ -1,4 +1,6 @@
 <script setup>
+import {computed} from 'vue'
+
 const props = defineProps({
   aspectRatioValue: [String, Number],
   maxWidth: [String, Number]
