@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import {ref, onMounted, watch, defineProps, computed, defineExpose} from 'vue'
+import {ref, onMounted, watch} from 'vue'
 // Importing Components
 import VideoWrapper from './common/Wrapper.vue'
 import Preview from './common/Preview.vue'
