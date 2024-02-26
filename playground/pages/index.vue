@@ -66,7 +66,6 @@ const handleSearch = (e, platform) => {
         max-width="720px"
         aspect-ratio="16:9"
         thumbnail-quality="standard"
-        @iterated="handleClick"
     />
 
     <div class="buttons">
