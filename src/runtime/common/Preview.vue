@@ -88,7 +88,7 @@ const defaultThumbnail = computed(() => {
         </template>
 
 
-        <button class="ly-button-wrapper" v-show="!clicked">
+        <button class="ly-button-wrapper" v-show="!clicked" aria-label="play">
           <slot name="button">
             <svg v-if="type === 'youtube'" height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
               <path class="ly-large-play-button-bg"
