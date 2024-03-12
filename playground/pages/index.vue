@@ -66,6 +66,7 @@ const handleSearch = (e, platform) => {
         max-width="720px"
         aspect-ratio="16:9"
         thumbnail-quality="standard"
+        iframe-policy="credentialless"
     />
 
     <div class="buttons">

@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import {ref, onMounted, watch, computed } from 'vue'
+import {ref, onMounted, watch, toRef, computed} from 'vue'
 
 import VideoWrapper from './common/Wrapper.vue'
 import Preview from './common/Preview.vue'
@@ -90,6 +90,11 @@ const props = defineProps({
     default: true,
     required: false
   },
+  iframePolicy: {
+    type: String,
+    default: "",
+    required: false
+  }
 },)
 
 
@@ -134,7 +139,7 @@ const resetView = () => {
   }
 }
 const initiateIframe = (autoplay = false, type = 'youtube') => {
-  iframeEl.value = createIframe(videoID.value, getTitle.value, props.iframeClass, type)
+  iframeEl.value = createIframe(videoID.value, getTitle.value, props.iframeClass, props.iframePolicy, type)
 
   iframeEl.value.addEventListener('load', () => {
     if (fetchingInfo.value === false) {
@@ -234,7 +239,7 @@ onMounted(() => {
   getFetchingOembed()
 })
 
-watch(props.src, async (val, oldVal) => {
+watch(toRef(() => props.src), async (val, oldVal) => {
   if (val !== oldVal) {
     resetState();
     getFetchingOembed()
