@@ -9,11 +9,8 @@
     "youtube-video",
     "vimeo",
     "lazyload",
-    "vue",
-    "vuejs",
     "iframe",
     "lazytube",
-    "plugin",
     "Nuxt.js 3"
   ],
   "license": "MIT",
@@ -38,8 +35,10 @@
     "dev:prepare": "nuxt-module-build --stub"
   },
   "devDependencies": {
+    "@nuxt/eslint-config": "^0.3.9",
     "@nuxt/module-builder": "^0.5.5",
     "@nuxt/schema": "^3.10.2",
+    "eslint": "^8.57.0",
     "nuxt": "^3.10.2",
     "typescript": "^5.3.3"
   },
