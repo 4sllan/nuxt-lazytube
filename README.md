@@ -9,7 +9,7 @@
 Embed a YouTube or Vimeo player easily and lazy load the video to save resources and reduces initial load size.
 Useful when performance and page size is important or for sites with many embedded videos.
 
-For a simple example page with 10 videos, vue-lazytube will reduce loadtime by 7x and memory usage by 2-3x.
+For a simple example page with 10 videos, nuxt-lazytube will reduce loadtime by 7x and memory usage by 2-3x.
 
 [![Static Badge](https://img.shields.io/badge/NPM:nuxt-lazytube?style=flat-square&colorA=18181B&colorB=28CF8D)](https://www.npmjs.com/package/nuxt-lazytube)
 [![Static Badge](https://img.shields.io/badge/GITHUB:nuxt-lazytube?style=flat-square&colorA=18181B&colorB=28CF8D)](https://github.com/4sllan/nuxt-lazytube)
@@ -19,7 +19,9 @@ For a simple example page with 10 videos, vue-lazytube will reduce loadtime by 7
 [![Nuxt][nuxt-src]][nuxt-href]
 [![Static Badge](https://img.shields.io/badge/-%E2%99%A5%20Sponsors-ec5cc6?style=flat-square)](https://github.com/sponsors/4sllan)
 
-[Demo online](https://codesandbox.io/s/vue-lazytube-forked-17o8v?file=/src/App.vue) | [Tutorial](https://medium.com/geekculture/light-and-responsive-youtube-embeds-faster-vue-web-page-load-speeds-c8e477b93f0f)
+[Demo online](https://codesandbox.io/s/vue-lazytube-forked-17o8v?file=/src/App.vue) 
+
+[//]: # (| [Tutorial]&#40;https://medium.com/geekculture/light-and-responsive-youtube-embeds-faster-vue-web-page-load-speeds-c8e477b93f0f&#41;)
 
 
 ---
@@ -55,11 +57,7 @@ For a simple example page with 10 videos, vue-lazytube will reduce loadtime by 7
 > nuxt-lazytube for Nuxt3 applications.
 
 ```sh
-$ npm install --save nuxt-lazytube
-```
-
-```sh
-$ yarn add nuxt-lazytube
+$ npx nuxi@latest module add nuxt-lazytube
 ```
 
 ### Config

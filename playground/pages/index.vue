@@ -1,13 +1,12 @@
 <script setup>
 import LazyYoutube from '../../src/runtime/LazyYoutube.vue'
 import LazyVimeo from "../../src/runtime/LazyVimeo.vue"
-import * as events from "events";
 
 const youtubeLazyVideo = ref()
 const vimeoLazyVideo = ref()
 
-const youtubeLink = ref('https://www.youtube.com/embed/_THZZFN4SYc')
-const vimeoLink = ref('https://player.vimeo.com/video/125683400')
+const youtubeLink = ref("https://www.youtube.com/embed/rvoUeOgsh3I");
+const vimeoLink = ref("https://player.vimeo.com/video/125683400");
 
 
 const handleClickTube = (event) => {
@@ -19,9 +18,9 @@ const handleClickVimeo = (event) => {
 }
 const handleSearch = (e, platform) => {
   if (platform === 'youtube')
-    this.youtubeLink = e.target.value;
+    youtubeLink.value = e.target.value;
   else
-    this.vimeoLink = e.target.value;
+   vimeoLink.value = e.target.value;
 }
 </script>
 
