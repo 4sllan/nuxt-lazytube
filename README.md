@@ -1,6 +1,7 @@
 <div align="center">
 <img src=".github/nuxt-lazytube.svg" width="400">
-<p align="center">Nuxt Lazytube support for Nuxt 3</p>
+<h1 align="center">Nuxt Lazytube</h1>
+<p align="center">Support for Nuxt 3</p>
 </div>
 
 
