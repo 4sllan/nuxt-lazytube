@@ -1,5 +1,5 @@
 <div align="center">
-<img src=".github/nuxt-lazytube.svg" width="300">
+<img src=".github/nuxt-lazytube.svg" width="200">
 <h1 align="center">Nuxt Lazytube</h1>
 <p align="center">Support for Nuxt 3</p>
 </div>
