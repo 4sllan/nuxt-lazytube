@@ -12,13 +12,11 @@ Useful when performance and page size is important or for sites with many embedd
 
 For a simple example page with 10 videos, nuxt-lazytube will reduce loadtime by 7x and memory usage by 2-3x.
 
-[![Static Badge](https://img.shields.io/badge/NPM:nuxt-lazytube?style=flat-square&colorA=18181B&colorB=28CF8D)](https://www.npmjs.com/package/nuxt-lazytube)
-[![Static Badge](https://img.shields.io/badge/GITHUB:nuxt-lazytube?style=flat-square&colorA=18181B&colorB=28CF8D)](https://github.com/4sllan/nuxt-lazytube)
-[![npm version](https://img.shields.io/npm/v/nuxt-lazytube/latest.svg?style=flat-square&colorA=18181B&colorB=28CF8D)](https://www.npmjs.com/package/nuxt-lazytube)
-![GitHub License][license]
-[![npm downloads](https://img.shields.io/npm/dt/nuxt-lazytube.svg?style=flat-square&colorA=18181B&colorB=28CF8D)](https://www.npmjs.com/package/nuxt-lazytube)
-[![Nuxt][nuxt-src]][nuxt-href]
-[![Static Badge](https://img.shields.io/badge/-%E2%99%A5%20Sponsors-ec5cc6?style=flat-square)](https://github.com/sponsors/4sllan)
+[![npm version][npm-v-src]][npm-v-href]
+[![GitHub License][license]][license-href]
+[![npm downloads][npm-d-src]][npm-d-href]
+[![Nuxt nuxt-feather-icons][nuxt-src]][nuxt-href]
+[![Static Badge][sponsor-src]][sponsor-href]
 
 [Demo online](https://codesandbox.io/p/devbox/nuxt-lazytube-forked-9lsw5v?file=%2Fpages%2Findex.vue) 
 
@@ -160,9 +158,23 @@ _Note: Must Replace `lazyVideo` with your [ref](https://v3.vuejs.org/guide/compo
 Released under [MIT](/LICENSE) by [@4slan](https://github.com/4sllan).
 
 
+[npm-v-src]: https://img.shields.io/npm/v/nuxt-lazytube/latest.svg?style=flat-square&colorA=18181B&colorB=28CF8D
+
+[npm-v-href]: https://www.npmjs.com/package/nuxt-lazytube
+
 [license]: https://img.shields.io/github/license/4sllan/nuxt-lazytube?style=flat-square&colorA=18181B&colorB=28CF8D
+
+[license-href]: https://github.com/4sllan/nuxt-lazytube
 
 [nuxt-src]: https://img.shields.io/badge/Nuxt-18181B?logo=nuxt.js
 
-[nuxt-href]: https://nuxt.com
+[nuxt-href]: https://nuxt.com/
+
+[npm-d-src]: https://img.shields.io/npm/dt/nuxt-lazytube.svg?style=flat-square&colorA=18181B&colorB=28CF8D
+
+[npm-d-href]: https://www.npmjs.com/package/nuxt-lazytube
+
+[sponsor-src]: https://img.shields.io/badge/-%E2%99%A5%20Sponsors-ec5cc6?style=flat-square
+
+[sponsor-href]:https://github.com/sponsors/4sllan
 
