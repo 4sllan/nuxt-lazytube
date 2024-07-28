@@ -58,6 +58,21 @@ const getVimeoID = (url) => {
     return new URL(url).pathname.split('/').pop()
 }
 
+/** Helper method to get the video parameters from the URL */
+
+const getVideoParams = async (url) => {
+    const urlParams = new URLSearchParams(url.split('?')[1]);
+    urlParams.delete('enablejsapi');
+    urlParams.delete('autoplay');
+
+    let params = [];
+    for (const elt of urlParams.entries()) {
+        params.push(elt.join('='));
+    }
+
+    return await Promise.all(params).then(value => '&' + value.join('&'))
+}
+
 /** Helper method to get Thumbnail for youtube video */
 const getYoutubeThumbnail = (video_id, quality) => {
     if (video_id) {
