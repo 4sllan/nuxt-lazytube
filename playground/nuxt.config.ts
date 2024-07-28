@@ -3,6 +3,6 @@ export default defineNuxtConfig({
         enabled: true
     },
     modules: [
-
+        "nuxt-lazytube"
     ]
 })
