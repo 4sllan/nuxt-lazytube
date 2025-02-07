@@ -5,7 +5,7 @@ import LazyVimeo from "../../src/runtime/LazyVimeo.vue"
 const youtubeLazyVideo = ref()
 const vimeoLazyVideo = ref()
 
-const youtubeLink = ref("https://www.youtube.com/embed/rvoUeOgsh3I");
+const youtubeLink = ref("//www.youtube.com/embed/7jGj8z5QysQ?rel=0&list=PLg65fUbBz9kLJjWCVtveJrrqkmckKmSeA");
 const vimeoLink = ref("https://player.vimeo.com/video/125683400");
 
 

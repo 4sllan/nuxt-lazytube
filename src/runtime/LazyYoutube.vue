@@ -133,7 +133,7 @@ const resetView = () => {
 }
 const initiateIframe = (autoplay = false, type = 'youtube') => {
 
-  iframeEl.value = createIframe(videoID.value, getTitle.value, props.iframeClass, props.iframePolicy, type)
+  iframeEl.value = createIframe(videoID.value, props.src, getTitle.value, props.iframeClass, props.iframePolicy, type)
 
   iframeEl.value.addEventListener('load', () => {
     if (fetchingInfo.value === false) {

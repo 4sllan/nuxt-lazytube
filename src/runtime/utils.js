@@ -8,12 +8,14 @@ const fetchingOembed = async (src, type = 'youtube') => {
 }
 
 /** Helper method to dynamically create iframe  */
-const createIframe = (videoID, getTitle, iframeClass, iframePolicy, type = 'youtube', flag = true) => {
+const createIframe = (videoID, urlCompare, getTitle, iframeClass, iframePolicy, type = 'youtube', flag = true) => {
     let iframeEl = null
     if (flag) {
         iframeEl = document.createElement('iframe')
         if (type === 'youtube') {
-            iframeEl.setAttribute('src', `https://www.youtube.com/embed/${videoID}?enablejsapi=1&autoplay=1`)
+            const mergedUrl = mergeQueryParams(`https://www.youtube.com/embed/${videoID}?enablejsapi=1&autoplay=1`, urlCompare);
+            iframeEl.setAttribute('src', mergedUrl)
+
         } else {
             iframeEl.setAttribute('src', `https://player.vimeo.com/video/${videoID}?autoplay=1`)
         }
@@ -58,19 +60,25 @@ const getVimeoID = (url) => {
     return new URL(url).pathname.split('/').pop()
 }
 
-/** Helper method to get the video parameters from the URL */
+/** Merges parameters ensuring there are no duplicates */
 
-const getVideoParams = async (url) => {
-    const urlParams = new URLSearchParams(url.split('?')[1]);
-    urlParams.delete('enablejsapi');
-    urlParams.delete('autoplay');
+const mergeQueryParams = (urlBase, urlToCompare) =>{
+    const parseUrl = (url) => {
+        const [base, queryString] = url.split('?');
+        const params = new URLSearchParams(queryString || '');
+        return { base, params };
+    };
 
-    let params = [];
-    for (const elt of urlParams.entries()) {
-        params.push(elt.join('='));
-    }
+    const baseObj = parseUrl(urlBase);
+    const compareObj = parseUrl(urlToCompare);
 
-    return await Promise.all(params).then(value => '&' + value.join('&'))
+    compareObj.params.forEach((value, key) => {
+        if (!baseObj.params.has(key)) {
+            baseObj.params.set(key, value);
+        }
+    });
+
+    return `${baseObj.base}?${baseObj.params.toString()}`;
 }
 
 /** Helper method to get Thumbnail for youtube video */
