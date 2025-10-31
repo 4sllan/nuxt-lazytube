@@ -15,6 +15,7 @@ const createIframe = (videoID, urlCompare, getTitle, iframeClass, iframePolicy, 
         if (type === 'youtube') {
             const mergedUrl = mergeQueryParams(`https://www.youtube.com/embed/${videoID}?enablejsapi=1&autoplay=1`, urlCompare);
             iframeEl.setAttribute('src', mergedUrl)
+            iframeEl.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin')
 
         } else {
             iframeEl.setAttribute('src', `https://player.vimeo.com/video/${videoID}?autoplay=1`)
