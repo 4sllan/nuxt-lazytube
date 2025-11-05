@@ -58,4 +58,4 @@ jobs:
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}  # Ou remova essa linha se estiver usando GITHUB_TOKEN padrão
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
