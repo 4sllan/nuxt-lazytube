@@ -1,7 +1,7 @@
 {
   "name": "nuxt-lazytube",
   "version": "0.2.4",
-  "description": "Nuxt.js 3|4 nuxt-lazytube",
+  "description": "Nuxt.js 3 | 4 nuxt-lazytube",
   "repository": "https://github.com/4sllan/nuxt-lazytube",
   "author": "Aslan Gama <@4slan>",
   "keywords": [
@@ -34,8 +34,9 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build",
+    "prepack": "nuxt-module-build build",
     "build": "nuxi build",
+    "generate": "nuxt generate",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "nuxi prepare playground && tsc --noEmit",
     "dev": "nuxi dev playground",
