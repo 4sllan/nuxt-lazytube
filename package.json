@@ -37,8 +37,8 @@
     "prepack": "nuxt-module-build",
     "build": "nuxi build",
     "lint": "eslint . --max-warnings=0",
-    "typecheck": "nuxi prepare playground/nuxt3 && tsc --noEmit",
-    "dev": "nuxi dev playground/nuxt3",
+    "typecheck": "nuxi prepare playground && tsc --noEmit",
+    "dev": "nuxi dev playground",
     "dev:prepare": "nuxt-module-build --stub"
   },
   "devDependencies": {
