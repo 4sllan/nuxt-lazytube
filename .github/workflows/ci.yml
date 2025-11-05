@@ -1,33 +1,61 @@
-name: ci
+name: 🚀 Criar Release
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - 'v*'  # Dispara quando um novo tag versão é criado (ex: v1.0.0)
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test
-
-  publish-gpr:
-    needs: build
+  release:
     runs-on: ubuntu-latest
     permissions:
-      packages: write
-      contents: read
+      contents: write  # Necessário para criar releases com GITHUB_TOKEN
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - name: 🛎️ Checkout do código
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configurar Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
-          registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - run: npm publish
+          node-version: 18
+          cache: 'npm'
+
+      - name: 📦 Instalar dependências
+        run: npm ci
+
+      - name: 📦 Construir pacote
+        run: npm run build
+
+      - name: 🧰 Instalar changelogen
+        run: npm install -g changelogen@0.3.2
+
+      - name: 📝 Gerar CHANGELOG.md
+        run: changelogen
+
+      - name: 📄 Verificar se CHANGELOG.md existe
+        run: |
+          if [ ! -f CHANGELOG.md ]; then
+            echo "Arquivo CHANGELOG.md não encontrado!"
+            exit 1
+          fi
+
+      - name: 📄 Adicionar Changelog na Release
+        id: changelog
+        run: |
+          VERSION="${{ github.ref_name }}"
+          awk "/^## \[/{if (p) exit; p=1} p" CHANGELOG.md > temp_changelog.md
+          echo "BODY<<EOF" >> $GITHUB_ENV
+          cat temp_changelog.md >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: 🚀 Criar Release no GitHub
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: ${{ env.BODY }}
+          draft: false
+          prerelease: false
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}

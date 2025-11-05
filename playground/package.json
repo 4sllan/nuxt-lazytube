@@ -10,9 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^3.10.2",
+    "nuxt": "4.2.0",
     "nuxt-lazytube": "latest",
-    "vue": "^3.4.27",
-    "vue-router": "^4.3.2"
+    "vue": "latest",
+    "vue-router": "latest"
   }
 }

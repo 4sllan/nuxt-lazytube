@@ -3,6 +3,7 @@ export default defineNuxtConfig({
         enabled: true
     },
     modules: [
-        "nuxt-lazytube"
-    ]
+        'nuxt-lazytube'
+    ],
+    compatibilityDate: '2025-11-05'
 })

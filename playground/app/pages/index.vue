@@ -1,12 +1,9 @@
 <script setup>
-import LazyYoutube from '../../src/runtime/LazyYoutube.vue'
-import LazyVimeo from "../../src/runtime/LazyVimeo.vue"
-
 const youtubeLazyVideo = ref()
 const vimeoLazyVideo = ref()
 
 const youtubeLink = ref("//www.youtube.com/embed/7jGj8z5QysQ?rel=0&list=PLg65fUbBz9kLJjWCVtveJrrqkmckKmSeA");
-const vimeoLink = ref("https://player.vimeo.com/video/125683400");
+const vimeoLink = ref("https://player.vimeo.com/video/1083487635");
 
 
 const handleClickTube = (event) => {
@@ -20,7 +17,7 @@ const handleSearch = (e, platform) => {
   if (platform === 'youtube')
     youtubeLink.value = e.target.value;
   else
-   vimeoLink.value = e.target.value;
+    vimeoLink.value = e.target.value;
 }
 </script>
 
@@ -45,7 +42,6 @@ const handleSearch = (e, platform) => {
         <button>Loading</button>
       </template>
     </LazyVimeo>
-
 
     <div class="buttons">
       <button @click="handleClickVimeo('playVideo')">Play</button>
@@ -74,7 +70,6 @@ const handleSearch = (e, platform) => {
       <button @click="handleClickTube('pauseVideo')">Pause</button>
       <button @click="handleClickTube('resetView')">Reset</button>
     </div>
-
 
   </div>
 </template>
