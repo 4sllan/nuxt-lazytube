@@ -1,7 +1,7 @@
 {
   "name": "nuxt-lazytube",
-  "version": "0.2.3",
-  "description": "Nuxt.js 3 nuxt-lazytube",
+  "version": "0.2.4",
+  "description": "Nuxt.js 3|4 nuxt-lazytube",
   "repository": "https://github.com/4sllan/nuxt-lazytube",
   "author": "Aslan Gama <@4slan>",
   "keywords": [
@@ -11,18 +11,25 @@
     "lazyload",
     "iframe",
     "lazytube",
-    "Nuxt.js 3"
+    "Nuxt.js 3",
+    "Nuxt.js 4"
   ],
   "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
     }
   },
-  "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
@@ -30,17 +37,17 @@
     "prepack": "nuxt-module-build",
     "build": "nuxi build",
     "lint": "eslint . --max-warnings=0",
-    "typecheck": "nuxi prepare playground && tsc --noEmit",
-    "dev": "nuxi dev playground",
+    "typecheck": "nuxi prepare playground/nuxt3 && tsc --noEmit",
+    "dev": "nuxi dev playground/nuxt3",
     "dev:prepare": "nuxt-module-build --stub"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.3.9",
-    "@nuxt/module-builder": "^0.5.5",
-    "@nuxt/schema": "^3.10.2",
-    "eslint": "^8.57.0",
-    "nuxt": "^3.10.2",
-    "typescript": "^5.3.3"
+    "@nuxt/module-builder": "^1.0.2",
+    "@nuxt/schema": "^4.1.2",
+    "eslint": "^9.39.1",
+    "nuxt": "^3.20.0",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "whatwg-fetch": "^3.6.20"
