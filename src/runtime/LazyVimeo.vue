@@ -174,7 +174,7 @@ const pauseVideo = () => {
   }
 
   if (iframeEl.value !== null) {
-    iframeEl.value.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*')
+    iframeEl.value.contentWindow.postMessage({method: 'pause'}, '*')
   }
 }
 const playVideo = () => {
@@ -185,7 +185,7 @@ const playVideo = () => {
   if (iframeEl.value === null) {
     initiateIframe(props.autoplay, 'vimeo')
   } else {
-    iframeEl.value.contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*')
+    iframeEl.value.contentWindow.postMessage({ method: 'play' }, '*')
   }
 }
 const stopVideo = () => {
@@ -194,7 +194,7 @@ const stopVideo = () => {
   }
 
   if (iframeEl.value !== null) {
-    iframeEl.value.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*')
+    iframeEl.value.contentWindow.postMessage({method: 'unload'}, '*')
   }
 }
 const getFetchingOembed = () => {
