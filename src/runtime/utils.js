@@ -8,21 +8,23 @@ const fetchingOembed = async (src, type = 'youtube') => {
 }
 
 /** Helper method to dynamically create iframe  */
-const createIframe = (videoID, urlCompare, getTitle, iframeClass, iframePolicy, type = 'youtube', flag = true) => {
+const createIframe = (videoID, urlCompare, getTitle, iframeClass, iframePolicy, type, flag = true) => {
     let iframeEl = null
     if (flag) {
         iframeEl = document.createElement('iframe')
+
         if (type === 'youtube') {
             const mergedUrl = mergeQueryParams(`https://www.youtube.com/embed/${videoID}?enablejsapi=1&autoplay=1`, urlCompare);
             iframeEl.setAttribute('src', mergedUrl)
-            iframeEl.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin')
 
         } else {
-            iframeEl.setAttribute('src', `https://player.vimeo.com/video/${videoID}?autoplay=1`)
+            const mergedUrl = mergeQueryParams(`https://player.vimeo.com/video/${videoID}?autoplay=1`, urlCompare);
+            iframeEl.setAttribute('src', mergedUrl)
         }
         iframeEl.setAttribute('frameborder', '0')
         iframeEl.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture')
         iframeEl.setAttribute('allowfullscreen', '1')
+        iframeEl.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin')
         iframeEl.setAttribute('title', `${getTitle}`)
         iframeEl.setAttribute('class', `${iframeClass}`)
         if (['anonymous', 'credentialless'].includes(iframePolicy)) {

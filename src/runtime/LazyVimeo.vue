@@ -138,8 +138,8 @@ const resetView = () => {
     onceLoaded.value = false
   }
 }
-const initiateIframe = (autoplay = false, type = 'youtube') => {
-  iframeEl.value = createIframe(videoID.value, getTitle.value, props.iframeClass, props.iframePolicy, type)
+const initiateIframe = (autoplay = false, type = 'vimeo') => {
+  iframeEl.value = createIframe(videoID.value, props.src, getTitle.value, props.iframeClass, props.iframePolicy, type)
 
   iframeEl.value.addEventListener('load', () => {
     if (fetchingInfo.value === false) {
@@ -174,7 +174,7 @@ const pauseVideo = () => {
   }
 
   if (iframeEl.value !== null) {
-    iframeEl.value.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*')
+    iframeEl.value.contentWindow.postMessage({method: 'pause'}, '*')
   }
 }
 const playVideo = () => {
@@ -185,7 +185,7 @@ const playVideo = () => {
   if (iframeEl.value === null) {
     initiateIframe(props.autoplay, 'vimeo')
   } else {
-    iframeEl.value.contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*')
+    iframeEl.value.contentWindow.postMessage({ method: 'play' }, '*')
   }
 }
 const stopVideo = () => {
@@ -194,7 +194,7 @@ const stopVideo = () => {
   }
 
   if (iframeEl.value !== null) {
-    iframeEl.value.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*')
+    iframeEl.value.contentWindow.postMessage({method: 'unload'}, '*')
   }
 }
 const getFetchingOembed = () => {

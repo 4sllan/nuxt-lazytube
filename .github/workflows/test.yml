@@ -1,0 +1,45 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛎️ Checkout do código
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: 📦 Instalar dependências
+        run: npm install
+
+      - name: 📦 Instalar dependências do playground
+        run: cd playground && npm install
+
+      - name: 🔧 Preparar ambiente Nuxt
+        run: npx nuxi prepare
+
+      - name: 🔧 Preparar ambiente do Playground
+        run: cd playground && npx nuxi prepare
+
+      - name: 🚀 Iniciar Nuxt no Playground
+        run: cd playground && npm run dev &  # Roda em segundo plano
+
+      - name: ⏳ Aguardar o servidor estar pronto
+        run: sleep 10  # Ajuste o tempo conforme necessário
+
+      - name: 🔍 Rodar testes
+        run: npm run test
