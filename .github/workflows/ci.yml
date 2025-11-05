@@ -28,7 +28,7 @@ jobs:
         run: npm run build
 
       - name: 🧰 Instalar changelogen
-        run: npm install -g changelogen@0.3.2
+        run: npm install -g changelogen@latest
 
       - name: 📝 Gerar CHANGELOG.md
         run: changelogen
