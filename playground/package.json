@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "nuxt": "4.2.0",
-    "nuxt-lazytube": "latest",
+    "nuxt-lazytube": "^0.2.4",
     "vue": "latest",
     "vue-router": "latest"
   }
