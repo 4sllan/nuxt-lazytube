@@ -1,0 +1,17 @@
+{
+  "name": "nuxt-lazytube",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxi build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "nuxt": "4.2.0",
+    "vue": "latest",
+    "vue-router": "latest"
+  }
+}
