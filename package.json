@@ -36,7 +36,6 @@
   "scripts": {
     "prepack": "nuxt-module-build build",
     "build": "nuxi build",
-    "generate": "nuxt generate",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "nuxi prepare playground && tsc --noEmit",
     "dev": "nuxi dev playground",
