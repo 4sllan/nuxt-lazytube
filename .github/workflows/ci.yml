@@ -30,6 +30,11 @@ jobs:
       - name: 🧰 Instalar changelogen
         run: npm install -g changelogen@latest
 
+      - name: 🔧 Configurar identidade do Git
+        run: |
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: 📝 Gerar CHANGELOG.md
         run: changelogen --output CHANGELOG.md --release ${{ github.ref_name }} --no-commit
 
