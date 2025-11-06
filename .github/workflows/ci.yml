@@ -31,7 +31,7 @@ jobs:
         run: npm install -g changelogen@latest
 
       - name: 📝 Gerar CHANGELOG.md
-        run: changelogen
+        run: changelogen --output CHANGELOG.md --release ${{ github.ref_name }}
 
       - name: 📄 Verificar se CHANGELOG.md existe
         run: |
