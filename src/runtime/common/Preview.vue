@@ -72,7 +72,6 @@ const defaultThumbnail = computed(() => {
 
 <template>
   <div class="vlt-preview" @click="$emit('click')">
-    {{ onceLoaded }}
     <template v-if="!onceLoaded">
       <template v-if="isVideoFound ">
         <img v-if="isCustomThumbnailExist" :src="customThumbnail" :alt="'Video - ' + videoTitle"
