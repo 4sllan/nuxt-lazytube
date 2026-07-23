@@ -1,8 +1,8 @@
 <template>
   <VideoWrapper
+      ref="videoWrapper"
       :aspect-ratio-value="aspectRatioValue"
       :max-width="maxWidth"
-      @vnode-mounted="initLib"
   >
     <Preview
         :is-video-found="isVideoFound"
@@ -103,6 +103,7 @@ const videoInfo = ref(null)
 const fetchingInfo = ref(true)
 const isVideoFound = ref(false)
 const VNodes = ref()
+const videoWrapper = ref(null)
 
 const videoID = computed(() => {
   return getYouTubeID(props.src)
@@ -117,9 +118,6 @@ const getTitle = computed(() => {
   return videoInfo.value !== null ? videoInfo.value.title : props.customTitle
 })
 
-const initLib = ({el, ctx}) => {
-  VNodes.value = ctx.vnode.el;
-}
 const resetView = () => {
   if (iframeEl.value !== null) {
     // Removing form dom
@@ -235,6 +233,7 @@ const resetState = () => {
 
 
 onMounted(() => {
+  VNodes.value = videoWrapper.value.wrapper
   getFetchingOembed()
 })
 

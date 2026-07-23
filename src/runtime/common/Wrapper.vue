@@ -1,5 +1,5 @@
 <script setup>
-import {computed} from 'vue'
+import {computed, ref} from 'vue'
 
 const props = defineProps({
   aspectRatioValue: [String, Number],
@@ -13,10 +13,16 @@ const cssVars = computed(() => {
   }
 })
 
+const wrapper = ref(null)
+
+defineExpose({
+  wrapper
+})
+
 </script>
 
 <template>
-  <div class="vlt-wrapper" :style="cssVars">
+  <div ref="wrapper" class="vlt-wrapper" :style="cssVars">
     <slot/>
   </div>
 </template>
