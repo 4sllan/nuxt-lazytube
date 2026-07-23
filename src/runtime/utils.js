@@ -55,7 +55,7 @@ const calcAspect = (aspect) => {
 const getYouTubeID = (url) => {
     url = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/u)
     /* eslint-disable no-useless-escape */
-    return (url[2] !== undefined) ? url[2].split(/[^0-9a-z_\-]/iu)[0] : url[0]
+    return (url[2] !== undefined) ? url[2].split(/[^\w\-]/iu)[0] : url[0]
 }
 
 /** Helper method to get vimeo video ID from url  */

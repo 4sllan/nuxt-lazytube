@@ -15,9 +15,9 @@ const handleClickVimeo = (event) => {
 }
 const handleSearch = (e, platform) => {
   if (platform === 'youtube')
-    youtubeLink.value = e.target.value;
+    {youtubeLink.value = e.target.value;}
   else
-    vimeoLink.value = e.target.value;
+    {vimeoLink.value = e.target.value;}
 }
 </script>
 
@@ -25,20 +25,22 @@ const handleSearch = (e, platform) => {
   <div id="app">
 
     <h2>Vimeo Lazy Video</h2>
-    <input class="input" type="text" @keydown.enter="handleSearch($event, 'vimeo')" placeholder="Vimeo Video Link"
-           :value="vimeoLink">
+    <input
+class="input" type="text" @keydown.enter="handleSearch($event, 'vimeo')" placeholder="Vimeo Video Link"
+           :value="vimeoLink"/>
 
-    <LazyVimeo ref="vimeoLazyVideo"
+    <LazyVimeo
+ref="vimeoLazyVideo"
                :src="vimeoLink"
                max-width="720px"
                aspect-ratio="16:9"
                thumbnail-quality="standard">
 
-      <template v-slot:button>
+      <template #button>
         <!--        <button>Play</button>-->
       </template>
 
-      <template v-slot:loader>
+      <template #loader>
         <button>Loading</button>
       </template>
     </LazyVimeo>
@@ -52,8 +54,9 @@ const handleSearch = (e, platform) => {
 
     <h2>Youtube Lazy Video</h2>
 
-    <input class="input" type="text" @keydown.enter="handleSearch($event, 'youtube')"
-           placeholder="Youtube Video Link or Video Id" :value="youtubeLink">
+    <input
+class="input" type="text" @keydown.enter="handleSearch($event, 'youtube')"
+           placeholder="Youtube Video Link or Video Id" :value="youtubeLink"/>
 
     <LazyYoutube
         ref="youtubeLazyVideo"

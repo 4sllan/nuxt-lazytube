@@ -1,28 +1,28 @@
 <template>
   <VideoWrapper
-      :aspectRatioValue="aspectRatioValue"
-      :maxWidth="maxWidth"
-      @VnodeMounted="initLib"
+      :aspect-ratio-value="aspectRatioValue"
+      :max-width="maxWidth"
+      @vnode-mounted="initLib"
   >
     <Preview
         type="vimeo"
-        :isVideoFound="isVideoFound"
-        :fetchingInfo="fetchingInfo"
-        :defaultThumbnailQuality="thumbnailQuality"
-        :customThumbnail="processedThumbnail"
-        :videoTitle="getTitle"
-        :videoID="videoID"
-        :showTitle="showTitle"
+        :is-video-found="isVideoFound"
+        :fetching-info="fetchingInfo"
+        :default-thumbnail-quality="thumbnailQuality"
+        :custom-thumbnail="processedThumbnail"
+        :video-title="getTitle"
+        :video-i-d="videoID"
+        :show-title="showTitle"
 
         :clicked="clicked"
-        :onceLoaded="onceLoaded"
+        :once-loaded="onceLoaded"
         @click="handleClick"
     >
-      <template v-slot:button>
+      <template #button>
         <slot name="button"/>
       </template>
 
-      <template v-slot:loader>
+      <template #loader>
         <slot name="loader"/>
       </template>
 
