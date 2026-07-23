@@ -8,7 +8,8 @@
     "emitDeclarationOnly": false,
     "jsx": "preserve",
     "resolveJsonModule": true,
-    "types": ["node", "vue"]
+    "types": ["node", "vue"],
+    "allowJs": true
   },
   "include": ["src/**/*.ts", "src/**/*.vue", "src/**/*.js"]
 }
