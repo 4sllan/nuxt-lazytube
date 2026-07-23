@@ -1,0 +1,86 @@
+#name: Deploy Docs
+#
+#on:
+#  push:
+#    branches:
+#      - main
+#    paths:
+#      - 'docs/**'
+#
+#permissions:
+#  contents: read
+#  pages: write
+#  id-token: write
+#
+#concurrency:
+#  group: "pages"
+#  cancel-in-progress: true
+#
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#
+#    outputs:
+#      docs_changed: ${{ steps.check.outputs.changed }}
+#
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v5
+#        with:
+#          fetch-depth: 0
+#
+#      - name: Check for docs changes
+#        id: check
+#        run: |
+#          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^docs/'; then
+#            echo "changed=true" >> $GITHUB_OUTPUT
+#          else
+#            echo "changed=false" >> $GITHUB_OUTPUT
+#          fi
+#
+#      - name: Stop if no changes
+#        if: steps.check.outputs.changed == 'false'
+#        run: echo "No changes in docs, skipping build"
+#
+#      - name: Setup pnpm
+#        if: steps.check.outputs.changed == 'true'
+#        uses: pnpm/action-setup@v4
+#        with:
+#          version: 10
+#
+#      - name: Setup Node
+#        if: steps.check.outputs.changed == 'true'
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: 22
+#          cache: pnpm
+#
+#      - name: Install dependencies
+#        if: steps.check.outputs.changed == 'true'
+#        working-directory: ./docs
+#        run: pnpm install --frozen-lockfile
+#
+#      - name: Build static site (Nuxt)
+#        if: steps.check.outputs.changed == 'true'
+#        working-directory: ./docs
+#        run: pnpm build
+#
+#      - name: Upload GitHub Pages artifact
+#        if: steps.check.outputs.changed == 'true'
+#        uses: actions/upload-pages-artifact@v3
+#        with:
+#          path: docs/.output/public
+#
+#  deploy:
+#    needs: build
+#    if: needs.build.outputs.docs_changed == 'true'
+#    runs-on: ubuntu-latest
+#
+#    environment:
+#      name: github-pages
+#      url: ${{ steps.deployment.outputs.page_url }}
+#
+#    steps:
+#      - name: Deploy to GitHub Pages
+#        id: deployment
+#        uses: actions/deploy-pages@v4
