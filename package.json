@@ -36,7 +36,7 @@
     "prepack": "nuxt-module-build build",
     "build": "nuxi build",
     "lint": "eslint . --fix",
-    "typecheck": " nuxi prepare playground && vue- tsc --noEmit ",
+    "typecheck": "nuxi prepare playground && vue-tsc --noEmit",
     "dev": "nuxi dev playground",
     "dev:prepare": "nuxt-module-build --stub",
     "test": "vitest run --reporter=verbose --silent=false",
