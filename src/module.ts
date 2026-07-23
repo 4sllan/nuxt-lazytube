@@ -1,4 +1,4 @@
-import { useLogger, createResolver, defineNuxtModule, addComponent } from '@nuxt/kit';
+import { createResolver, defineNuxtModule, addComponent } from '@nuxt/kit';
 
 type ModuleOptions = Record<string, never>;
 
@@ -15,23 +15,17 @@ export default defineNuxtModule<ModuleOptions>({
   },
 
   setup(moduleOptions, nuxt) {
-    const logger = useLogger(PACKAGE_NAME);
-
     const { resolve } = createResolver(import.meta.url);
 
     addComponent({
-      name: 'lazy-youtube',
+      name: 'LazyYoutube',
       filePath: resolve(`./runtime/LazyYoutube.vue`),
-      pascalName: 'LazyYoutube',
       global: true,
-      mode: 'client',
     });
     addComponent({
-      name: 'lazy-vimeo',
+      name: 'LazyVimeo',
       filePath: resolve(`./runtime/LazyVimeo.vue`),
-      pascalName: 'LazyVimeo',
       global: true,
-      mode: 'client',
     });
   },
 });
