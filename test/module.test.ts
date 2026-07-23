@@ -49,11 +49,9 @@ describe('Nuxt Module', () => {
     
     // Check if addComponent was called for LazyYoutube
     expect(mockAddComponent).toHaveBeenCalledWith({
-      name: 'lazy-youtube',
+      name: 'LazyYoutube',
       filePath: './runtime/LazyYoutube.vue',
-      pascalName: 'LazyYoutube',
       global: true,
-      mode: 'client'
     })
   })
 
@@ -71,11 +69,9 @@ describe('Nuxt Module', () => {
     
     // Check if addComponent was called for LazyVimeo
     expect(mockAddComponent).toHaveBeenCalledWith({
-      name: 'lazy-vimeo',
+      name: 'LazyVimeo',
       filePath: './runtime/LazyVimeo.vue',
-      pascalName: 'LazyVimeo',
       global: true,
-      mode: 'client'
     })
   })
 
