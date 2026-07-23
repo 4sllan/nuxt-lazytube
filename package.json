@@ -50,13 +50,17 @@
     "@nuxt/module-builder": "^1.0.3",
     "@nuxt/schema": "^4.5.0",
     "@nuxt/test-utils": "^4.0.3",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/test-utils": "^2.4.11",
     "changelogen": "^0.6.2",
     "eslint": "^10.7.0",
+    "happy-dom": "^20.11.1",
     "mkdist": "^2.4.1",
     "nuxt": "^4.5.0",
     "prettier": "^3.9.6",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10",
+    "vue": "^3.5.40",
     "vue-tsc": "^3.3.8"
   },
   "dependencies": {
