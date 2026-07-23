@@ -18,11 +18,6 @@ For a simple example page with 10 videos, nuxt-lazytube will reduce loadtime by 
 [![Nuxt nuxt-feather-icons][nuxt-src]][nuxt-href]
 [![Static Badge][sponsor-src]][sponsor-href]
 
-[//]: # ([Demo online]&#40;https://nuxt-lazytube.netlify.app/&#41; )
-
-[//]: # (| [Tutorial]&#40;https://medium.com/geekculture/light-and-responsive-youtube-embeds-faster-vue-web-page-load-speeds-c8e477b93f0f&#41;)
-
-
 ---
 
 #### Table of Content
@@ -46,8 +41,6 @@ For a simple example page with 10 videos, nuxt-lazytube will reduce loadtime by 
 - platform supported: Youtube and Vimeo
 
 ## Demo
-
-[//]: # ([![view nuxt-lazytube]&#40;https://codesandbox.io/static/img/play-codesandbox.svg&#41;]&#40;https://codesandbox.io/p/devbox/nuxt-lazytube-forked-9lsw5v?file=%2Fpages%2Findex.vue&#41;)
 
 ## Setup
 
