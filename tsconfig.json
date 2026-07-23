@@ -2,14 +2,13 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node16",
+    "moduleResolution": "Bundler",
     "strict": true,
     "declaration": true,
     "emitDeclarationOnly": false,
     "jsx": "preserve",
-    "allowJs": true,
     "resolveJsonModule": true,
     "types": ["node", "vue"]
   },
-  "include": ["src/**/*.ts", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.vue", "src/**/*.js"]
 }
