@@ -1,46 +1,39 @@
-import {
-    useLogger,
-    createResolver,
-    defineNuxtModule,
-    addComponent
-} from '@nuxt/kit'
+import { useLogger, createResolver, defineNuxtModule, addComponent } from '@nuxt/kit';
 
 interface ModuleOptions {
-
+  // TODO: add module options
 }
 
-
-const PACKAGE_NAME: string = 'nuxt-lazytube'
+const PACKAGE_NAME: string = 'nuxt-lazytube';
 export default defineNuxtModule<ModuleOptions>({
-
-    meta: {
-        name: PACKAGE_NAME,
-        configKey: 'NuxtLazytube',
-        // Compatibility constraints
-        compatibility: {
-            // Semver version of supported nuxt versions
-            nuxt: '>=3.0.0'
-        }
+  meta: {
+    name: PACKAGE_NAME,
+    configKey: 'NuxtLazytube',
+    // Compatibility constraints
+    compatibility: {
+      // Semver version of supported nuxt versions
+      nuxt: '>=3.0.0',
     },
+  },
 
-    setup(moduleOptions, nuxt) {
-        const logger = useLogger(PACKAGE_NAME)
+  setup(moduleOptions, nuxt) {
+    const logger = useLogger(PACKAGE_NAME);
 
-        const {resolve} = createResolver(import.meta.url)
+    const { resolve } = createResolver(import.meta.url);
 
-        addComponent({
-            name: "lazy-youtube",
-            filePath: resolve(`./runtime/LazyYoutube.vue`),
-            pascalName: "LazyYoutube",
-            global: true,
-            mode: 'client',
-        })
-        addComponent({
-            name: "lazy-vimeo",
-            filePath: resolve(`./runtime/LazyVimeo.vue`),
-            pascalName: "LazyVimeo",
-            global: true,
-            mode: 'client',
-        })
-    }
-})
+    addComponent({
+      name: 'lazy-youtube',
+      filePath: resolve(`./runtime/LazyYoutube.vue`),
+      pascalName: 'LazyYoutube',
+      global: true,
+      mode: 'client',
+    });
+    addComponent({
+      name: 'lazy-vimeo',
+      filePath: resolve(`./runtime/LazyVimeo.vue`),
+      pascalName: 'LazyVimeo',
+      global: true,
+      mode: 'client',
+    });
+  },
+});
