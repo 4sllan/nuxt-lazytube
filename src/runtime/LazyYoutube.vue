@@ -1,27 +1,27 @@
 <template>
   <VideoWrapper
-      :aspectRatioValue="aspectRatioValue"
-      :maxWidth="maxWidth"
-      @VnodeMounted="initLib"
+      ref="videoWrapper"
+      :aspect-ratio-value="aspectRatioValue"
+      :max-width="maxWidth"
   >
     <Preview
-        :isVideoFound="isVideoFound"
-        :fetchingInfo="fetchingInfo"
-        :defaultThumbnailQuality="thumbnailQuality"
-        :customThumbnail="customThumbnail"
-        :videoTitle="getTitle"
-        :videoID="videoID"
-        :showTitle="showTitle"
+        :is-video-found="isVideoFound"
+        :fetching-info="fetchingInfo"
+        :default-thumbnail-quality="thumbnailQuality"
+        :custom-thumbnail="customThumbnail"
+        :video-title="getTitle"
+        :video-i-d="videoID"
+        :show-title="showTitle"
 
         :clicked="clicked"
-        :onceLoaded="onceLoaded"
+        :once-loaded="onceLoaded"
         @click="handleClick"
     >
-      <template v-slot:button>
+      <template #button>
         <slot name="button"/>
       </template>
 
-      <template v-slot:loader>
+      <template #loader>
         <slot name="loader"/>
       </template>
 
@@ -103,6 +103,7 @@ const videoInfo = ref(null)
 const fetchingInfo = ref(true)
 const isVideoFound = ref(false)
 const VNodes = ref()
+const videoWrapper = ref(null)
 
 const videoID = computed(() => {
   return getYouTubeID(props.src)
@@ -117,9 +118,6 @@ const getTitle = computed(() => {
   return videoInfo.value !== null ? videoInfo.value.title : props.customTitle
 })
 
-const initLib = ({el, ctx}) => {
-  VNodes.value = ctx.vnode.el;
-}
 const resetView = () => {
   if (iframeEl.value !== null) {
     // Removing form dom
@@ -235,6 +233,7 @@ const resetState = () => {
 
 
 onMounted(() => {
+  VNodes.value = videoWrapper.value.wrapper
   getFetchingOembed()
 })
 
