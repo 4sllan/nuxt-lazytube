@@ -1,135 +1,140 @@
 <script setup>
-import {computed} from 'vue'
+import { computed } from 'vue';
 
-import {getVimeoThumbnail, getYoutubeThumbnail} from "../utils";
+import { getVimeoThumbnail, getYoutubeThumbnail } from '../utils';
 
 const props = defineProps({
   type: {
     type: String,
     default: 'youtube',
-    required: false
+    required: false,
   },
   clicked: {
     type: Boolean,
     default: false,
-    required: false
+    required: false,
   },
   onceLoaded: {
     type: Boolean,
     default: false,
-    required: false
+    required: false,
   },
   isVideoFound: {
     type: Boolean,
     default: false,
-    required: false
+    required: false,
   },
   fetchingInfo: {
     type: Boolean,
     default: false,
-    required: false
+    required: false,
   },
   defaultThumbnailQuality: {
     type: String,
     default: 'standard',
-    required: false
+    required: false,
   },
   videoTitle: {
     type: String,
     default: '',
-    required: false
+    required: false,
   },
   videoID: {
     type: String,
     default: '',
-    required: true
+    required: true,
   },
   showTitle: {
     type: Boolean,
     default: true,
-    required: false
+    required: false,
   },
   customThumbnail: {
     type: String,
     default: '',
-    required: false
+    required: false,
   },
-})
+});
 const isCustomTitleExist = computed(() => {
-  return this.customTitle.trim().length > 0
-})
+  return this.customTitle.trim().length > 0;
+});
 const isCustomThumbnailExist = computed(() => {
-  return props.customThumbnail.trim().length > 0
-})
+  return props.customThumbnail.trim().length > 0;
+});
 const defaultThumbnail = computed(() => {
   if (props.type === 'youtube') {
-    return getYoutubeThumbnail(props.videoID, props.defaultThumbnailQuality)
+    return getYoutubeThumbnail(props.videoID, props.defaultThumbnailQuality);
   } else {
-    return getVimeoThumbnail(props.videoID, props.defaultThumbnailQuality)
+    return getVimeoThumbnail(props.videoID, props.defaultThumbnailQuality);
   }
-})
+});
 </script>
 
 <template>
   <div class="vlt-preview" @click="$emit('click')">
-    {{ onceLoaded }}
     <template v-if="!onceLoaded">
-      <template v-if="isVideoFound ">
+      <template v-if="isVideoFound">
         <img
-v-if="isCustomThumbnailExist" :src="customThumbnail" :alt="'Video - ' + videoTitle"
-             @error="$event.target.src=defaultThumbnail"
+          v-if="isCustomThumbnailExist"
+          :src="customThumbnail"
+          :alt="'Video - ' + videoTitle"
+          @error="$event.target.src = defaultThumbnail"
         />
-        <img
-            v-else
-            :src="defaultThumbnail" :alt="'Video - ' + videoTitle"
-        />
+        <img v-else :src="defaultThumbnail" :alt="'Video - ' + videoTitle" />
 
         <template v-if="showTitle">
           <span class="ly-text">{{ videoTitle }}</span>
         </template>
 
-
         <button class="ly-button-wrapper" v-show="!clicked" aria-label="play">
           <slot name="button">
-            <svg v-if="type === 'youtube'" height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
+            <svg
+              v-if="type === 'youtube'"
+              height="100%"
+              version="1.1"
+              viewBox="0 0 68 48"
+              width="100%"
+            >
               <path
-class="ly-large-play-button-bg"
-                    d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"
-                    fill="#f00"/>
-              <path d="M 45,24 27,14 27,34" fill="#fff"/>
+                class="ly-large-play-button-bg"
+                d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"
+                fill="#f00"
+              />
+              <path d="M 45,24 27,14 27,34" fill="#fff" />
             </svg>
             <svg v-else height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
               <path
-class="ly-large-play-button-bg--v"
-                    d="M 63 0 C 55.79 0.13 34 0 34 0 S 12.21 0.13 0 0 C 0.06 13.05 0 24 0 24 s 0.06 10.95 0 24 C 12.21 47.87 34 48 34 48 s 21.79 -0.13 34 -0 C 67.94 34.95 68 24 68 24 S 67.94 13.05 68 0 z"
-                    fill="#00adef"/>
-              <path d="M 45,24 27,14 27,34" fill="#fff"/>
+                class="ly-large-play-button-bg--v"
+                d="M 63 0 C 55.79 0.13 34 0 34 0 S 12.21 0.13 0 0 C 0.06 13.05 0 24 0 24 s 0.06 10.95 0 24 C 12.21 47.87 34 48 34 48 s 21.79 -0.13 34 -0 C 67.94 34.95 68 24 68 24 S 67.94 13.05 68 0 z"
+                fill="#00adef"
+              />
+              <path d="M 45,24 27,14 27,34" fill="#fff" />
             </svg>
           </slot>
         </button>
 
         <div v-show="clicked" class="ly-loader-wrapper">
           <slot name="loader">
-              <span class="ly-ring">
-                <span/>
-                <span/>
-                <span/>
-              </span>
+            <span class="ly-ring">
+              <span />
+              <span />
+              <span />
+            </span>
           </slot>
         </div>
-
       </template>
 
       <template v-else-if="!fetchingInfo">
         <div class="ly-error-container">
-            <span class="ly-error-icon">
-              <svg fill="#fff" viewBox="0 0 48 48">
-                <path d="M0 0h48v48H0V0z" fill="none"/>
-                <path
-                    d="M22 30h4v4h-4zm0-16h4v12h-4zm1.99-10C12.94 4 4 12.95 4 24s8.94 20 19.99 20S44 35.05 44 24 35.04 4 23.99 4zM24 40c-8.84 0-16-7.16-16-16S15.16 8 24 8s16 7.16 16 16-7.16 16-16 16z"
-                    fill-opacity="0.7"/>
-              </svg>
-            </span>
+          <span class="ly-error-icon">
+            <svg fill="#fff" viewBox="0 0 48 48">
+              <path d="M0 0h48v48H0V0z" fill="none" />
+              <path
+                d="M22 30h4v4h-4zm0-16h4v12h-4zm1.99-10C12.94 4 4 12.95 4 24s8.94 20 19.99 20S44 35.05 44 24 35.04 4 23.99 4zM24 40c-8.84 0-16-7.16-16-16S15.16 8 24 8s16 7.16 16 16-7.16 16-16 16z"
+                fill-opacity="0.7"
+              />
+            </svg>
+          </span>
 
           <span class="ly-error-content">
             <span class="ly-error-content__reason">
@@ -140,7 +145,6 @@ class="ly-large-play-button-bg--v"
             </span>
           </span>
         </div>
-
       </template>
     </template>
   </div>
@@ -196,8 +200,8 @@ class="ly-large-play-button-bg--v"
   .ly-error-content {
     display: flex;
     flex-direction: column;
-    text-shadow: 0 0 2px rgba(0, 0, 0, .5);
-    font-family: "YouTube Noto", Roboto, Arial, Helvetica, sans-serif;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    font-family: 'YouTube Noto', Roboto, Arial, Helvetica, sans-serif;
 
     .ly-error-content__reason {
       font-size: 22px;
@@ -225,16 +229,16 @@ class="ly-large-play-button-bg--v"
     width: 68px;
     height: 48px;
     transform: translate(-50%, -50%);
-    -webkit-transition: opacity .25s cubic-bezier(0, 0, 0.2, 1);
-    transition: opacity .25s cubic-bezier(0, 0, 0.2, 1);
+    -webkit-transition: opacity 0.25s cubic-bezier(0, 0, 0.2, 1);
+    transition: opacity 0.25s cubic-bezier(0, 0, 0.2, 1);
     z-index: 63;
   }
 
   .ly-text {
     position: relative;
     z-index: 26;
-    text-shadow: 0 0 2px rgba(0, 0, 0, .5);
-    font-family: "YouTube Noto", Roboto, Arial, Helvetica, sans-serif;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    font-family: 'YouTube Noto', Roboto, Arial, Helvetica, sans-serif;
     width: 82%;
     white-space: nowrap;
     overflow: hidden;
@@ -244,25 +248,40 @@ class="ly-large-play-button-bg--v"
     color: #ffffff;
   }
 
-  .ly-large-play-button-bg, .ly-large-play-button-bg--v {
-    -webkit-transition: fill .1s cubic-bezier(0.4, 0, 1, 1), fill-opacity .1s cubic-bezier(0.4, 0, 1, 1);
-    transition: fill .1s cubic-bezier(0.4, 0, 1, 1), fill-opacity .1s cubic-bezier(0.4, 0, 1, 1);
+  .ly-large-play-button-bg,
+  .ly-large-play-button-bg--v {
+    -webkit-transition:
+      fill 0.1s cubic-bezier(0.4, 0, 1, 1),
+      fill-opacity 0.1s cubic-bezier(0.4, 0, 1, 1);
+    transition:
+      fill 0.1s cubic-bezier(0.4, 0, 1, 1),
+      fill-opacity 0.1s cubic-bezier(0.4, 0, 1, 1);
     fill: #1b1b1b;
-    fill-opacity: .9
+    fill-opacity: 0.9;
   }
 
-  .ly-large-play-button-bg:hover, &:hover .ly-large-play-button-bg {
-    -webkit-transition: fill .1s cubic-bezier(0, 0, 0.2, 1), fill-opacity .1s cubic-bezier(0, 0, 0.2, 1);
-    transition: fill .1s cubic-bezier(0, 0, 0.2, 1), fill-opacity .1s cubic-bezier(0, 0, 0.2, 1);
+  .ly-large-play-button-bg:hover,
+  &:hover .ly-large-play-button-bg {
+    -webkit-transition:
+      fill 0.1s cubic-bezier(0, 0, 0.2, 1),
+      fill-opacity 0.1s cubic-bezier(0, 0, 0.2, 1);
+    transition:
+      fill 0.1s cubic-bezier(0, 0, 0.2, 1),
+      fill-opacity 0.1s cubic-bezier(0, 0, 0.2, 1);
     fill: #f00;
-    fill-opacity: 1
+    fill-opacity: 1;
   }
 
-  .ly-large-play-button-bg--v:hover, &:hover .ly-large-play-button-bg--v {
-    -webkit-transition: fill .1s cubic-bezier(0, 0, 0.2, 1), fill-opacity .1s cubic-bezier(0, 0, 0.2, 1);
-    transition: fill .1s cubic-bezier(0, 0, 0.2, 1), fill-opacity .1s cubic-bezier(0, 0, 0.2, 1);
+  .ly-large-play-button-bg--v:hover,
+  &:hover .ly-large-play-button-bg--v {
+    -webkit-transition:
+      fill 0.1s cubic-bezier(0, 0, 0.2, 1),
+      fill-opacity 0.1s cubic-bezier(0, 0, 0.2, 1);
+    transition:
+      fill 0.1s cubic-bezier(0, 0, 0.2, 1),
+      fill-opacity 0.1s cubic-bezier(0, 0, 0.2, 1);
     fill: #00adef;
-    fill-opacity: 1
+    fill-opacity: 1;
   }
 
   .ly-ring {
@@ -285,8 +304,7 @@ class="ly-large-play-button-bg--v"
       border: 7px solid #ffffff;
       border-radius: 50%;
       animation: ly-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-      border-color: #FFFFFF transparent transparent transparent;
-
+      border-color: #ffffff transparent transparent transparent;
     }
 
     span:nth-child(1) {
@@ -317,8 +335,14 @@ class="ly-large-play-button-bg--v"
 }
 
 .vlt-preview::after {
-  background: radial-gradient(circle, rgba(19, 19, 27, 0.13) 0%, rgba(0, 0, 0, 0) 40%, rgba(86, 88, 88, 0.09) 100%) no-repeat center center fixed;
-  content: "";
+  background: radial-gradient(
+      circle,
+      rgba(19, 19, 27, 0.13) 0%,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(86, 88, 88, 0.09) 100%
+    )
+    no-repeat center center fixed;
+  content: '';
   width: 100%;
   position: absolute;
   top: 0;
@@ -327,7 +351,7 @@ class="ly-large-play-button-bg--v"
 }
 
 .vlt-preview::before {
-  content: "";
+  content: '';
   height: 60px;
   padding-bottom: 50px;
   top: 0;
@@ -338,11 +362,10 @@ class="ly-large-play-button-bg--v"
   position: absolute;
   background-repeat: repeat-x;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAADGCAYAAAAT+OqFAAAAdklEQVQoz42QQQ7AIAgEF/T/D+kbq/RWAlnQyyazA4aoAB4FsBSA/bFjuF1EOL7VbrIrBuusmrt4ZZORfb6ehbWdnRHEIiITaEUKa5EJqUakRSaEYBJSCY2dEstQY7AuxahwXFrvZmWl2rh4JZ07z9dLtesfNj5q0FU3A5ObbwAAAABJRU5ErkJggg==);
-  -moz-transition: opacity .25s cubic-bezier(0.0, 0.0, 0.2, 1);
-  -webkit-transition: opacity .25s cubic-bezier(0.0, 0.0, 0.2, 1);
-  transition: opacity .25s cubic-bezier(0.0, 0.0, 0.2, 1);
+  -moz-transition: opacity 0.25s cubic-bezier(0, 0, 0.2, 1);
+  -webkit-transition: opacity 0.25s cubic-bezier(0, 0, 0.2, 1);
+  transition: opacity 0.25s cubic-bezier(0, 0, 0.2, 1);
   pointer-events: none;
   opacity: 0.9;
 }
-
 </style>
