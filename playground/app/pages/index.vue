@@ -15,7 +15,6 @@ const handleClickTube = (event) => {
   youtubeLazyVideo.value[event]();
 };
 const handleClickVimeo = (event) => {
-  console.log(vimeoLazyVideo);
   vimeoLazyVideo.value[event]();
 };
 const handleSearch = (e, platform) => {
