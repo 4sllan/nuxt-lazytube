@@ -1,8 +1,6 @@
 import { useLogger, createResolver, defineNuxtModule, addComponent } from '@nuxt/kit';
 
-interface ModuleOptions {
-  // TODO: add module options
-}
+type ModuleOptions = Record<string, never>;
 
 const PACKAGE_NAME: string = 'nuxt-lazytube';
 export default defineNuxtModule<ModuleOptions>({
