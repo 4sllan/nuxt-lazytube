@@ -9,7 +9,14 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
-  modules: ['@nuxt/image', '@nuxt/ui', '@nuxt/content', 'nuxt-llms', 'nuxt-lazytube'],
+  modules: [
+    '@nuxt/image',
+    '@nuxt/ui',
+    '@nuxt/content',
+    'nuxt-og-image',
+    'nuxt-llms',
+    'nuxt-lazytube',
+  ],
 
   compatibilityDate: '2024-07-11',
 
@@ -64,6 +71,12 @@ export default defineNuxtConfig({
           searchDepth: 1,
         },
       },
+    },
+  },
+
+  vite: {
+    optimizeDeps: {
+      include: ['@vue/devtools-core', '@vue/devtools-kit'],
     },
   },
 });
