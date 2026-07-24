@@ -1,40 +1,40 @@
 <template>
-  <VideoWrapper
-      ref="videoWrapper"
-      :aspect-ratio-value="aspectRatioValue"
-      :max-width="maxWidth"
-  >
+  <VideoWrapper ref="videoWrapper" :aspect-ratio-value="aspectRatioValue" :max-width="maxWidth">
     <Preview
-        :is-video-found="isVideoFound"
-        :fetching-info="fetchingInfo"
-        :default-thumbnail-quality="thumbnailQuality"
-        :custom-thumbnail="customThumbnail"
-        :video-title="getTitle"
-        :video-i-d="videoID"
-        :show-title="showTitle"
-
-        :clicked="clicked"
-        :once-loaded="onceLoaded"
-        @click="handleClick"
+      :is-video-found="isVideoFound"
+      :fetching-info="fetchingInfo"
+      :default-thumbnail-quality="thumbnailQuality"
+      :custom-thumbnail="customThumbnail"
+      :video-title="getTitle"
+      :video-i-d="videoID"
+      :show-title="showTitle"
+      :clicked="clicked"
+      :once-loaded="onceLoaded"
+      @click="handleClick"
     >
       <template #button>
-        <slot name="button"/>
+        <slot name="button" />
       </template>
 
       <template #loader>
-        <slot name="loader"/>
+        <slot name="loader" />
       </template>
-
     </Preview>
   </VideoWrapper>
 </template>
 
 <script setup>
-import {ref, onMounted, watch, toRef, computed} from 'vue'
+import { ref, onMounted, watch, toRef, computed } from 'vue';
 
-import VideoWrapper from './common/Wrapper.vue'
-import Preview from './common/Preview.vue'
-import {calcAspect, createIframe, fetchingOembed, getYouTubeID, isPostMessageSupported} from "./utils";
+import VideoWrapper from './common/Wrapper.vue';
+import Preview from './common/Preview.vue';
+import {
+  calcAspect,
+  createIframe,
+  fetchingOembed,
+  getYouTubeID,
+  isPostMessageSupported,
+} from './utils';
 
 const props = defineProps({
   src: {
@@ -45,209 +45,227 @@ const props = defineProps({
     type: String,
     default: '16:9',
     validator: function (value) {
-      return /^\d+:\d+$/u.test(value)
+      return /^\d+:\d+$/u.test(value);
     },
-    required: false
+    required: false,
   },
   showTitle: {
     type: Boolean,
     default: true,
-    required: false
+    required: false,
   },
   maxWidth: {
     type: String,
     default: '560px',
-    required: false
+    required: false,
   },
   autoplay: {
     type: Boolean,
     default: false,
-    required: false
+    required: false,
   },
   thumbnailQuality: {
     type: String,
     default: 'standard',
-    required: false
+    required: false,
   },
   iframeClass: {
     type: String,
     default: 'ly-iframe',
-    required: false
+    required: false,
   },
   customTitle: {
     type: String,
     default: '',
-    required: false
+    required: false,
   },
   customThumbnail: {
     type: String,
     default: '',
-    required: false
+    required: false,
   },
   oembedFetch: {
     type: Boolean,
     default: true,
-    required: false
+    required: false,
   },
   iframePolicy: {
     type: String,
-    default: "",
-    required: false
-  }
-})
+    default: '',
+    required: false,
+  },
+});
 
-const clicked = ref(false)
-const onceLoaded = ref(false)
-const iframeEl = ref(null)
-const videoInfo = ref(null)
-const fetchingInfo = ref(true)
-const isVideoFound = ref(false)
-const VNodes = ref()
-const videoWrapper = ref(null)
+const clicked = ref(false);
+const onceLoaded = ref(false);
+const iframeEl = ref(null);
+const videoInfo = ref(null);
+const fetchingInfo = ref(true);
+const isVideoFound = ref(false);
+const VNodes = ref();
+const videoWrapper = ref(null);
 
 const videoID = computed(() => {
-  return getYouTubeID(props.src)
-})
+  return getYouTubeID(props.src);
+});
 const aspectRatioValue = computed(() => {
-  return calcAspect(props.aspectRatio)
-})
+  return calcAspect(props.aspectRatio);
+});
 const getTitle = computed(() => {
   if (props.customTitle) {
-    return props.customTitle
+    return props.customTitle;
   }
-  return videoInfo.value !== null ? videoInfo.value.title : props.customTitle
-})
+  return videoInfo.value !== null ? videoInfo.value.title : props.customTitle;
+});
 
 const resetView = () => {
   if (iframeEl.value !== null) {
     // Removing form dom
-    iframeEl.value.remove()
+    iframeEl.value.remove();
 
     // Resetting the states
-    iframeEl.value = null
-    clicked.value = false
-    onceLoaded.value = false
+    iframeEl.value = null;
+    clicked.value = false;
+    onceLoaded.value = false;
   }
-}
+};
 const initiateIframe = (autoplay = false, type = 'youtube') => {
-
-  iframeEl.value = createIframe(videoID.value, props.src, getTitle.value, props.iframeClass, props.iframePolicy, type)
+  iframeEl.value = createIframe(
+    videoID.value,
+    props.src,
+    getTitle.value,
+    props.iframeClass,
+    props.iframePolicy,
+    type
+  );
 
   iframeEl.value.addEventListener('load', () => {
     if (fetchingInfo.value === false) {
       if (!onceLoaded.value) {
-        onceLoaded.value = true
+        onceLoaded.value = true;
       }
     }
 
     if (autoplay) {
       if (type === 'youtube') {
-        iframeEl.value.contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*')
+        iframeEl.value.contentWindow.postMessage(
+          '{"event":"command","func":"' + 'playVideo' + '","args":""}',
+          '*'
+        );
       } else {
         iframeEl.value.contentWindow.postMessage('{"method":"play"}', '*');
       }
     }
-  })
+  });
 
-  VNodes.value.appendChild(iframeEl.value)
+  VNodes.value.appendChild(iframeEl.value);
 
-  iframeEl.value.focus()
-}
+  iframeEl.value.focus();
+};
 const handleClick = () => {
-  clicked.value = true
+  clicked.value = true;
   if (fetchingInfo.value === false && !onceLoaded.value && isVideoFound.value) {
     if (clicked.value && iframeEl.value === null) {
-      initiateIframe()
+      initiateIframe();
     }
-
   }
-}
+};
 const pauseVideo = () => {
   if (!isPostMessageSupported) {
-    return
+    return;
   }
 
   if (iframeEl.value !== null) {
-    iframeEl.value.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*')
+    iframeEl.value.contentWindow.postMessage(
+      '{"event":"command","func":"' + 'pauseVideo' + '","args":""}',
+      '*'
+    );
   }
-}
+};
 const playVideo = () => {
   if (!isPostMessageSupported) {
-    return
+    return;
   }
 
   if (iframeEl.value === null) {
-    initiateIframe(props.autoplay)
+    initiateIframe(props.autoplay);
   } else {
-    iframeEl.value.contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*')
+    iframeEl.value.contentWindow.postMessage(
+      '{"event":"command","func":"' + 'playVideo' + '","args":""}',
+      '*'
+    );
   }
-}
+};
 const stopVideo = () => {
   if (!isPostMessageSupported) {
-    return
+    return;
   }
 
   if (iframeEl.value !== null) {
-    iframeEl.value.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*')
+    iframeEl.value.contentWindow.postMessage(
+      '{"event":"command","func":"' + 'stopVideo' + '","args":""}',
+      '*'
+    );
   }
-}
+};
 const getFetchingOembed = () => {
   if (props.oembedFetch) {
-
     // Fetch Oembed
     fetchingOembed(props.src)
-        .then(function (response) {
-          return response.json()
-        })
-        .then(response => {
-          videoInfo.value = response
-          isVideoFound.value = true
-        })
-        .catch(() => {
-          // handle error
-          videoInfo.value = null
-          isVideoFound.value = false
-        })
-        .finally(() => {
-          // always executed
-          fetchingInfo.value = false
+      .then(function (response) {
+        return response.json();
+      })
+      .then((response) => {
+        videoInfo.value = response;
+        isVideoFound.value = true;
+      })
+      .catch(() => {
+        // handle error
+        videoInfo.value = null;
+        isVideoFound.value = false;
+      })
+      .finally(() => {
+        // always executed
+        fetchingInfo.value = false;
 
-          if (props.autoplay) {
-            playVideo()
-          }
-        })
+        if (props.autoplay) {
+          playVideo();
+        }
+      });
   } else {
-    isVideoFound.value = true
-    fetchingInfo.value = false
+    isVideoFound.value = true;
+    fetchingInfo.value = false;
   }
-}
+};
 const resetState = () => {
-  resetView()
-  clicked.value = false
-  onceLoaded.value = false
-  iframeEl.value = null
-  videoInfo.value = null
-  fetchingInfo.value = true
-  isVideoFound.value = false
-}
-
+  resetView();
+  clicked.value = false;
+  onceLoaded.value = false;
+  iframeEl.value = null;
+  videoInfo.value = null;
+  fetchingInfo.value = true;
+  isVideoFound.value = false;
+};
 
 onMounted(() => {
-  VNodes.value = videoWrapper.value.wrapper
-  getFetchingOembed()
-})
+  VNodes.value = videoWrapper.value.wrapper;
+  getFetchingOembed();
+});
 
-watch(toRef(() => props.src), async (val, oldVal) => {
-  if (val !== oldVal) {
-    resetState();
-    getFetchingOembed()
+watch(
+  toRef(() => props.src),
+  async (val, oldVal) => {
+    if (val !== oldVal) {
+      resetState();
+      getFetchingOembed();
+    }
   }
-})
+);
 
 defineExpose({
   pauseVideo,
   playVideo,
   stopVideo,
-  resetView
-})
+  resetView,
+});
 </script>

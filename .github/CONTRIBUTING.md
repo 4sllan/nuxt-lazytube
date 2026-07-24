@@ -59,11 +59,13 @@ Clone the repository:
 git clone https://github.com/4sllan/nuxt-lazytube.git
 cd nuxt-lazytube
 ```
+
 Install dependencies:
 
 ```bash
 pnpm install
 ```
+
 Run the development environment:
 
 ```bash
@@ -84,16 +86,17 @@ Example:
 git checkout -b feat/my-feature
 ```
 
-| Type     | Example                          |
-| -------- | -------------------------------- |
-| Feature  | `feat/add-youtube-api-support`   |
-| Fix      | `fix/vimeo-thumbnail-loading`    |
-| Docs     | `docs/update-usage-guide`        |
-| Refactor | `refactor/lazy-loading-logic`    |
+| Type     | Example                        |
+| -------- | ------------------------------ |
+| Feature  | `feat/add-youtube-api-support` |
+| Fix      | `fix/vimeo-thumbnail-loading`  |
+| Docs     | `docs/update-usage-guide`      |
+| Refactor | `refactor/lazy-loading-logic`  |
 
 ## ✍️ Commit Guidelines
 
 We follow Conventional Commits:
+
 ```text
 type(scope): description
 ```

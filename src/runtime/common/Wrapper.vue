@@ -1,29 +1,28 @@
 <script setup>
-import {computed, ref} from 'vue'
+import { computed, ref } from 'vue';
 
 const props = defineProps({
   aspectRatioValue: [String, Number],
-  maxWidth: [String, Number]
-})
+  maxWidth: [String, Number],
+});
 const cssVars = computed(() => {
   return {
     /* variables you want to pass to css */
     '--vlt-aspect-ratio': props.aspectRatioValue ? props.aspectRatioValue : 56,
-    '--vlt-max-width': props.maxWidth ? props.maxWidth : '560px'
-  }
-})
+    '--vlt-max-width': props.maxWidth ? props.maxWidth : '560px',
+  };
+});
 
-const wrapper = ref(null)
+const wrapper = ref(null);
 
 defineExpose({
-  wrapper
-})
-
+  wrapper,
+});
 </script>
 
 <template>
   <div ref="wrapper" class="vlt-wrapper" :style="cssVars">
-    <slot/>
+    <slot />
   </div>
 </template>
 
@@ -49,7 +48,7 @@ defineExpose({
   padding-top: 56.25%; /* 16:9 */
   /* falls back to 16/9, but otherwise uses ratio from HTML */
   padding-top: calc(var(--vlt-aspect-ratio) * 1%);
-  content: "";
+  content: '';
 }
 
 .vlt-wrapper :deep(iframe) {

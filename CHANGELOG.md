@@ -1,4 +1,3 @@
-
 ## v0.2.6
 
 [compare changes](https://github.com/4sllan/nuxt-lazytube/compare/v1.0.6...v0.2.6)
@@ -44,4 +43,3 @@
 ### ❤️ Contributors
 
 - Aslan.gama <aslan.gama@sixchains.com.br>
-
