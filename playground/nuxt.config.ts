@@ -5,9 +5,4 @@ export default defineNuxtConfig({
   },
   modules: [myModule],
   compatibilityDate: '2025-11-05',
-  vite: {
-    optimizeDeps: {
-      include: ['whatwg-fetch'],
-    },
-  },
 });
