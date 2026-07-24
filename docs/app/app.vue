@@ -8,9 +8,11 @@ const { data: files } = useLazyAsyncData('search', () => queryCollectionSearchSe
   server: false,
 });
 
+const { app } = useRuntimeConfig();
+
 useHead({
   meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
-  link: [{ rel: 'icon', href: '/logo.svg' }],
+  link: [{ rel: 'icon', href: `${app.baseURL}logo.svg` }],
   htmlAttrs: {
     lang: 'en',
   },
