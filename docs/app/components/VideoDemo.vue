@@ -112,7 +112,9 @@ h2 {
   border: 2px solid #e2e8f0;
   border-radius: 0.5rem;
   font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .input:focus {
@@ -137,12 +139,12 @@ h2 {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  background-color: #3b82f6;
+  background-color: #303135;
   color: white;
 }
 
 .buttons button:hover {
-  background-color: #2563eb;
+  background-color: #58780b;
   transform: translateY(-1px);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
