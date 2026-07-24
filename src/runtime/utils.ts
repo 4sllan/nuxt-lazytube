@@ -3,10 +3,14 @@ const fetchingOembed = async (
   src: string,
   type: 'youtube' | 'vimeo' = 'youtube'
 ): Promise<Response> => {
-  const url =
-    type === 'youtube'
-      ? `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${getYouTubeID(src)}&format=json`
-      : `https://vimeo.com/api/oembed.json?url=${src}`;
+  let url: string;
+  if (type === 'youtube') {
+    url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${getYouTubeID(src)}&format=json`;
+  } else {
+    const vimeoUrl = new URL('https://vimeo.com/api/oembed.json');
+    vimeoUrl.searchParams.set('url', src);
+    url = vimeoUrl.toString();
+  }
 
   return await window.fetch(url);
 };
@@ -57,6 +61,9 @@ const createIframe = (
 
 /** Helper method to check if postMessage features is available  */
 const isPostMessageSupported = (): boolean => {
+  if (typeof window === 'undefined') {
+    return false;
+  }
   if (!window.postMessage) {
     return false;
   }
@@ -87,7 +94,6 @@ const getVimeoID = (url: string): string | undefined => {
   } catch {
     return undefined;
   }
-};
 };
 
 /** Merges parameters ensuring there are no duplicates */
