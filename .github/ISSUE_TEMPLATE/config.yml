@@ -1,0 +1,10 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: 💬 Questions & Discussions
+    url: https://github.com/4sllan/nuxt-lazytube/discussions
+    about: Please ask and answer questions here.
+
+  - name: 🔐 Report a Security Vulnerability
+    url: https://github.com/4sllan/nuxt-lazytube/security/advisories/new
+    about: Please report security vulnerabilities privately.
