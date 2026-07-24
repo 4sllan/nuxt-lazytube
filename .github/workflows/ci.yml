@@ -38,10 +38,10 @@ jobs:
         run: cd playground && npx nuxi prepare
 
       - name: 🚀 Iniciar Nuxt no Playground
-        run: cd playground && pnpm dev &  # Roda em segundo plano
+        run: cd playground && pnpm dev & # Roda em segundo plano
 
       - name: ⏳ Aguardar o servidor estar pronto
-        run: sleep 10  # Ajuste o tempo conforme necessário
+        run: sleep 10 # Ajuste o tempo conforme necessário
 
       - name: Run Unit Tests
         run: pnpm test

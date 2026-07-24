@@ -4,7 +4,6 @@
 <p align="center">Support for Nuxt </p>
 </div>
 
-
 <br>
 
 Embed a YouTube or Vimeo player easily and lazy load the video to save resources and reduces initial load size.
@@ -27,10 +26,10 @@ For a simple example page with 10 videos, nuxt-lazytube will reduce loadtime by 
 - [Installation](#installation)
 - [Usage](#usage)
 - [API](#api)
-    * [Props](#props)
-    * [Slots](#slots)
-    * [Methods](#methods)
-    * [Example](#example)
+  - [Props](#props)
+  - [Slots](#slots)
+  - [Methods](#methods)
+  - [Example](#example)
 
 ## Features
 
@@ -56,9 +55,9 @@ $ npx nuxi@latest module add nuxt-lazytube
 
 ### Config
 
-***nuxt.config.js***
+_**nuxt.config.js**_
 
-``` js
+```js
 {
      modules: [
         'nuxt-lazytube',
@@ -83,25 +82,25 @@ $ npx nuxi@latest module add nuxt-lazytube
 
 ### Props
 
-| Name               | Type      | Default Value | Description                                                                                                                                                                             | Required |
-|--------------------|-----------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| `src`              | `String`  | ``            | To load the video and iframe, the link must be from YouTube or Vimeo. Any additional query parameters in the URL will be automatically included.                                                                                                                          | `true`   |
+| Name               | Type      | Default Value | Description                                                                                                                                                                              | Required |
+| ------------------ | --------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `src`              | `String`  | ``            | To load the video and iframe, the link must be from YouTube or Vimeo. Any additional query parameters in the URL will be automatically included.                                         | `true`   |
 | `aspectRatio`      | `String`  | `16:9`        | Maintaining the aspect ratio of video, perfect for responsively handling video embeds based on the width of the parent, should be in `*:*` format. e.g, `1:1`, `4:3`, `16:9` and `21:9`. | `false`  |
-| `maxWidth`         | `String`  | `560px`       | Defines maximum width of video container.                                                                                                                                               | `false`  |
-| `showTitle`        | `Boolean` | `true`        | Defines whether to show video title on top.                                                                                                                                             | `false`  |
-| `autoplay`         | `Boolean` | `false`       | Defines whether to load the iframe as the page loads _(not recommended)_                                                                                                                | `false`  |
-| `thumbnailQuality` | `String`  | `standard`    | Defines the quality of thumbnail, should be one of the following `default`, `medium`, `high`, `standard` or `maxres`                                                                    | `false`  |
-| `iframeClass`      | `String`  | `ly-iframe`   | Defines the class on iframe element                                                                                                                                                     | `false`  |
-| `customTitle`      | `String`  | ``            | Defines the custom title of the video                                                                                                                                                   | `false`  |
-| `customThumbnail`  | `String`  | ``            | Defines the custom thumbnail image link of the video                                                                                                                                    | `false`  |
-| `iframePolicy`     | `String`  | ``            | Define iframe in COEP environments ['anonymous' or 'credentialless'].                                                                                                                   | `false`  |
+| `maxWidth`         | `String`  | `560px`       | Defines maximum width of video container.                                                                                                                                                | `false`  |
+| `showTitle`        | `Boolean` | `true`        | Defines whether to show video title on top.                                                                                                                                              | `false`  |
+| `autoplay`         | `Boolean` | `false`       | Defines whether to load the iframe as the page loads _(not recommended)_                                                                                                                 | `false`  |
+| `thumbnailQuality` | `String`  | `standard`    | Defines the quality of thumbnail, should be one of the following `default`, `medium`, `high`, `standard` or `maxres`                                                                     | `false`  |
+| `iframeClass`      | `String`  | `ly-iframe`   | Defines the class on iframe element                                                                                                                                                      | `false`  |
+| `customTitle`      | `String`  | ``            | Defines the custom title of the video                                                                                                                                                    | `false`  |
+| `customThumbnail`  | `String`  | ``            | Defines the custom thumbnail image link of the video                                                                                                                                     | `false`  |
+| `iframePolicy`     | `String`  | ``            | Define iframe in COEP environments ['anonymous' or 'credentialless'].                                                                                                                    | `false`  |
 
 ### Slots
 
 This Component provides some slots. You can use the named slot to render custom play button and loader:
 
 | Slot   | Description                                         |
-|--------|-----------------------------------------------------|
+| ------ | --------------------------------------------------- |
 | button | Slot gives an ability to provide custom play button |
 | loader | Slot gives an ability to provide custom loader      |
 
@@ -113,7 +112,7 @@ like `play`, `stop`, `pause` and `reset`.
 > The user's browser must support the HTML5 postMessage feature. Most modern browsers support postMessage.
 
 | Name       | Type       | Usage                                     |
-|------------|------------|-------------------------------------------| 
+| ---------- | ---------- | ----------------------------------------- |
 | playVideo  | `function` | `this.$refs["lazyVideo"]['playVideo']()`  |
 | stopVideo  | `function` | `this.$refs["lazyVideo"]['stopVideo']()`  |
 | pauseVideo | `function` | `this.$refs["lazyVideo"]['pauseVideo']()` |
@@ -124,27 +123,23 @@ _Note: Must Replace `lazyVideo` with your [ref](https://v3.vuejs.org/guide/compo
 ### Example
 
 ```html
-
 <script setup>
-    const lazyVideo = ref()
+  const lazyVideo = ref();
 
-    const handleClick = (event) => {
-        lazyVideo.value[event]()
-    }
+  const handleClick = (event) => {
+    lazyVideo.value[event]();
+  };
 </script>
 
 <template>
-    <div>
-        <LazyYoutube
-                ref="lazyVideo"
-                src="https://www.youtube.com/embed/KfYkzXTut1Y"
-        />
+  <div>
+    <LazyYoutube ref="lazyVideo" src="https://www.youtube.com/embed/KfYkzXTut1Y" />
 
-        <button @click="handleClick('playVideo')">Play</button>
-        <button @click="handleClick('stopVideo')"> Stop</button>
-        <button @click="handleClick('pauseVideo')"> Pause</button>
-        <button @click="handleClick('resetView')"> Reset</button>
-    </div>
+    <button @click="handleClick('playVideo')">Play</button>
+    <button @click="handleClick('stopVideo')">Stop</button>
+    <button @click="handleClick('pauseVideo')">Pause</button>
+    <button @click="handleClick('resetView')">Reset</button>
+  </div>
 </template>
 ```
 

@@ -80,8 +80,8 @@ const getYouTubeID = (url: string): string => {
 };
 
 /** Helper method to get vimeo video ID from url  */
-const getVimeoID = (url: string): string | undefined => {
-  return new URL(url).pathname.split('/').pop();
+const getVimeoID = (url: string): string => {
+  return new URL(url).pathname.split('/').pop() || '';
 };
 
 /** Merges parameters ensuring there are no duplicates */
@@ -111,18 +111,20 @@ const getYoutubeThumbnail = (
   quality?: 'default' | 'medium' | 'high' | 'standard' | 'maxres'
 ): string | false => {
   if (video_id) {
-    const qualityValue = quality || 'high';
+    if (typeof quality === 'undefined') {
+      quality = 'high';
+    }
 
     let quality_key = 'maxresdefault'; // Max quality
-    if (qualityValue === 'default') {
+    if (quality === 'default') {
       quality_key = 'default';
-    } else if (qualityValue === 'medium') {
+    } else if (quality === 'medium') {
       quality_key = 'mqdefault';
-    } else if (qualityValue === 'high') {
+    } else if (quality === 'high') {
       quality_key = 'hqdefault';
-    } else if (qualityValue === 'standard') {
+    } else if (quality === 'standard') {
       quality_key = 'sddefault';
-    } else if (qualityValue === 'maxres') {
+    } else if (quality === 'maxres') {
       quality_key = 'maxresdefault';
     }
 
@@ -138,18 +140,20 @@ const getVimeoThumbnail = (
   quality?: 'default' | 'medium' | 'high' | 'standard' | 'maxres'
 ): string | false => {
   if (video_id) {
-    const qualityValue = quality || 'high';
+    if (typeof quality === 'undefined') {
+      quality = 'high';
+    }
 
     let quality_key = '960x540';
-    if (qualityValue === 'default') {
+    if (quality === 'default') {
       quality_key = '200x150';
-    } else if (qualityValue === 'medium') {
+    } else if (quality === 'medium') {
       quality_key = '295x166';
-    } else if (qualityValue === 'high') {
+    } else if (quality === 'high') {
       quality_key = '640x360';
-    } else if (qualityValue === 'standard') {
+    } else if (quality === 'standard') {
       quality_key = '960x540';
-    } else if (qualityValue === 'maxres') {
+    } else if (quality === 'maxres') {
       quality_key = '1280x720';
     }
     return 'https://i.vimeocdn.com/video/' + video_id + '_' + quality_key + '.jpg';

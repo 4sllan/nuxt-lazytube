@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { header } = useAppConfig()
+const { header } = useAppConfig();
 </script>
 
 <template>
