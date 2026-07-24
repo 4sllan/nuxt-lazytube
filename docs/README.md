@@ -1,6 +1,6 @@
-# Nuxt Minimal Starter
+# Nuxt Lazytube Documentation
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is the documentation site for [nuxt-lazytube](https://github.com/4sllan/nuxt-lazytube), a Nuxt module for lazy loading YouTube and Vimeo videos.
 
 ## Setup
 
@@ -40,7 +40,7 @@ bun run dev
 
 ## Production
 
-Build the application for production:
+Build the documentation for production:
 
 ```bash
 # npm
@@ -72,4 +72,4 @@ yarn preview
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Check out the [Nuxt Content documentation](https://content.nuxt.com/) for more information.
