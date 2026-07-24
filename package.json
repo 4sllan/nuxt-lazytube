@@ -63,7 +63,6 @@
     "vue-tsc": "^3.3.8"
   },
   "dependencies": {
-    "@nuxt/kit": "4.4.8",
-    "whatwg-fetch": "^3.6.20"
+    "@nuxt/kit": "4.4.8"
   }
 }
