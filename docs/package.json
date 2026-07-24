@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-umbu",
+  "name": "nuxt-lazytube",
   "private": true,
   "type": "module",
   "scripts": {
@@ -20,6 +20,7 @@
     "@nuxt/content": "^3.15.2",
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.10.0",
+    "@takumi-rs/core": "^2.4.2",
     "nuxt": "^4.5.0",
     "nuxt-llms": "^0.2.0",
     "nuxt-og-image": "^6.7.4"
