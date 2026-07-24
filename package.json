@@ -48,7 +48,7 @@
   "devDependencies": {
     "@nuxt/eslint-config": "^1.16.0",
     "@nuxt/module-builder": "^1.0.3",
-    "@nuxt/schema": "^4.5.0",
+    "@nuxt/schema": "4.4.8",
     "@nuxt/test-utils": "^4.0.3",
     "@vitejs/plugin-vue": "^6.0.8",
     "@vue/test-utils": "^2.4.11",
@@ -56,14 +56,14 @@
     "eslint": "^10.7.0",
     "happy-dom": "^20.11.1",
     "mkdist": "^2.4.1",
-    "nuxt": "^4.5.0",
+    "nuxt": "4.4.8",
     "prettier": "^3.9.6",
     "typescript": "^6.0.3",
     "vitest": "^4.1.10",
     "vue-tsc": "^3.3.8"
   },
   "dependencies": {
-    "@nuxt/kit": "^4.5.0",
+    "@nuxt/kit": "4.4.8",
     "whatwg-fetch": "^3.6.20"
   }
 }
