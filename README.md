@@ -42,6 +42,8 @@ For a simple example page with 10 videos, nuxt-lazytube will reduce loadtime by 
 
 ## Demo
 
+[![Documentation](https://img.shields.io/badge/Documentation-NuxtLazytube-black?style=flat-square&colorA=18181B&colorB=28CF8D)](https://4sllan.github.io/nuxt-lazytube/)
+
 ## Setup
 
 ## Installation
