@@ -48,7 +48,7 @@ For a simple example page with 10 videos, nuxt-lazytube will reduce loadtime by 
 
 ## Installation
 
-> nuxt-lazytube for Nuxt3 applications.
+> nuxt-lazytube for Nuxt applications.
 
 ```sh
 $ npx nuxi@latest module add nuxt-lazytube
