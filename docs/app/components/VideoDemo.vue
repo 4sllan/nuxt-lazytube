@@ -32,6 +32,7 @@ const handleSearch = (e: Event, platform: 'youtube' | 'vimeo') => {
       @keydown.enter="handleSearch($event, 'vimeo')"
       placeholder="Vimeo Video Link"
       :value="vimeoLink"
+      aria-label="Vimeo video URL input"
     />
 
     <LazyVimeo
@@ -65,6 +66,7 @@ const handleSearch = (e: Event, platform: 'youtube' | 'vimeo') => {
       @keydown.enter="handleSearch($event, 'youtube')"
       placeholder="Youtube Video Link or Video Id"
       :value="youtubeLink"
+      aria-label="YouTube video URL input"
     />
 
     <LazyYoutube
