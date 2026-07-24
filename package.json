@@ -2,8 +2,19 @@
   "name": "nuxt-lazytube",
   "version": "0.2.6",
   "description": "A Nuxt module for lazy loading YouTube and Vimeo videos with lightweight iframes to improve page performance",
-  "repository": "https://github.com/4sllan/nuxt-lazytube",
   "author": "Aslan Gama <@4slan>",
+  "homepage": "https://4sllan.github.io/nuxt-lazytube",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4sllan/nuxt-lazytube.git"
+  },
+  "bugs": {
+    "url": "https://github.com/4sllan/nuxt-lazytube/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/4sllan"
+  },
   "keywords": [
     "youtube",
     "youtube-video",
