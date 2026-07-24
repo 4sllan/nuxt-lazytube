@@ -37,6 +37,7 @@
     "build": "nuxi build",
     "lint": "eslint . --fix",
     "typecheck": "nuxi prepare playground && vue-tsc --noEmit",
+    "postinstall": "nuxi prepare",
     "dev": "nuxi dev playground",
     "dev:prepare": "nuxt-module-build --stub",
     "test": "vitest run --reporter=verbose --silent=false",
