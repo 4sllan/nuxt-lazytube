@@ -81,7 +81,13 @@ const getYouTubeID = (url: string): string => {
 
 /** Helper method to get vimeo video ID from url  */
 const getVimeoID = (url: string): string | undefined => {
-  return new URL(url).pathname.split('/').pop();
+  try {
+    const segments = new URL(url).pathname.split('/').filter(Boolean);
+    return segments.pop();
+  } catch {
+    return undefined;
+  }
+};
 };
 
 /** Merges parameters ensuring there are no duplicates */
