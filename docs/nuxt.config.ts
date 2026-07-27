@@ -46,16 +46,6 @@ export default defineNuxtConfig({
 
     sections: [
       {
-        title: 'Why Use',
-        contentCollection: 'docs',
-        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/why-use%' }],
-      },
-      {
-        title: 'Installation',
-        contentCollection: 'docs',
-        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/installation%' }],
-      },
-      {
         title: 'Getting Started',
         contentCollection: 'docs',
         contentFilters: [{ field: 'path', operator: 'LIKE', value: '/getting-started%' }],
