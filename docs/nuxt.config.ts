@@ -56,9 +56,59 @@ export default defineNuxtConfig({
         contentFilters: [{ field: 'path', operator: 'LIKE', value: '/usage%' }],
       },
       {
+        title: 'Demo',
+        contentCollection: 'docs',
+        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/demo%' }],
+      },
+      {
         title: 'API',
         contentCollection: 'docs',
         contentFilters: [{ field: 'path', operator: 'LIKE', value: '/api%' }],
+      },
+      {
+        title: 'Features',
+        contentCollection: 'docs',
+        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/features%' }],
+      },
+      {
+        title: 'Comparison',
+        contentCollection: 'docs',
+        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/comparison%' }],
+      },
+      {
+        title: 'Performance',
+        contentCollection: 'docs',
+        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/performance%' }],
+      },
+      {
+        title: 'Supported URLs',
+        contentCollection: 'docs',
+        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/supported-urls%' }],
+      },
+      {
+        title: 'FAQ',
+        contentCollection: 'docs',
+        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/faq%' }],
+      },
+      {
+        title: 'Roadmap',
+        contentCollection: 'docs',
+        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/roadmap%' }],
+      },
+      {
+        title: 'Best Practices',
+        contentCollection: 'docs',
+        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/best-practices%' }],
+      },
+      {
+        title: 'Migration',
+        contentCollection: 'docs',
+        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/migration%' }],
+      },
+      {
+        title: 'Contributing',
+        contentCollection: 'docs',
+        contentFilters: [{ field: 'path', operator: 'LIKE', value: '/contributing%' }],
       },
     ],
   },
