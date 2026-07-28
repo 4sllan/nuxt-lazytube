@@ -9,6 +9,11 @@ export default defineNuxtConfig({
     },
   },
 
+  site: {
+    url: 'https://4sllan.github.io',
+    name: 'nuxt-lazytube',
+  },
+
   devtools: {
     enabled: true,
   },
@@ -136,5 +141,9 @@ export default defineNuxtConfig({
     optimizeDeps: {
       include: ['@vue/devtools-core', '@vue/devtools-kit'],
     },
+  },
+
+  ogImage: {
+    zeroRuntime: true,
   },
 });
