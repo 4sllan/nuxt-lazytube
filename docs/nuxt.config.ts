@@ -1,6 +1,12 @@
 export default defineNuxtConfig({
   app: {
     baseURL: '/nuxt-lazytube/',
+    head: {
+      meta: [
+        { name: 'theme-color', content: '#00dc82' },
+        { name: 'theme-color', content: '#18181b', media: '(prefers-color-scheme: dark)' },
+      ],
+    },
   },
 
   devtools: {
@@ -16,6 +22,7 @@ export default defineNuxtConfig({
     'nuxt-og-image',
     'nuxt-llms',
     'nuxt-lazytube',
+    'nuxt-seo-utils',
   ],
 
   compatibilityDate: '2024-07-11',
