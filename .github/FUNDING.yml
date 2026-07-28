@@ -10,6 +10,4 @@ liberapay: # Replace with a single Liberapay username
 issuehunt: # Replace with a single IssueHunt username
 otechie: # Replace with a single Otechie username
 custom:
-  - url: "https://4sllan.github.io/nuxt-lazytube/contributing/support"
-    name: "Support"
-    icon: "heart"
+  - "https://4sllan.github.io/nuxt-lazytube/contributing/support"
