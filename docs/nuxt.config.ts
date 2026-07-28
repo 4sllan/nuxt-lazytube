@@ -139,7 +139,12 @@ export default defineNuxtConfig({
 
   vite: {
     optimizeDeps: {
-      include: ['@vue/devtools-core', '@vue/devtools-kit'],
+      include: [
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        'pix-payload', // CJS
+        'vue-qrcode-reader',
+      ],
     },
   },
 
