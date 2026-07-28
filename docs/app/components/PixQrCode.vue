@@ -1,5 +1,4 @@
 <script setup>
-import QrcodeVue from 'qrcode.vue';
 import { payload } from 'pix-payload';
 
 const data = {
@@ -7,11 +6,16 @@ const data = {
   name: 'Aslan Kelvin',
   city: 'SAO PAULO',
 };
+
 const pixKey = payload(data);
+
+const qr = useQrcode(pixKey, {
+  toBase64: true,
+});
 </script>
 
 <template>
   <div class="flex justify-center my-4">
-    <QrcodeVue :value="pixKey" :size="200" level="H" />
+    <NuxtImg :src="qr" alt="pix qr code" width="200" height="200" />
   </div>
 </template>

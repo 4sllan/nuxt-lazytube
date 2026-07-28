@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     'nuxt-llms',
     'nuxt-lazytube',
     'nuxt-seo-utils',
+    'nuxt-qrcode',
   ],
 
   compatibilityDate: '2024-07-11',

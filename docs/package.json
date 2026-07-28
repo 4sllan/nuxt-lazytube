@@ -27,12 +27,12 @@
     "nuxt-og-image": "^6.7.4",
     "nuxt-seo-utils": "8.3.2",
     "pix-payload": "^1.0.4",
-    "qrcode.vue": "^3.10.0",
     "satori": "^0.29.0"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.16.0",
     "eslint": "^10.8.0",
+    "nuxt-qrcode": "^0.4.10",
     "nuxtseo-layer-devtools": "^5.3.6",
     "typescript": "^7.0.2",
     "vue-tsc": "^3.3.8"
