@@ -7,6 +7,12 @@ definePageMeta({
 });
 
 const route = useRoute();
+
+// Redireciona a rota raiz para /getting-started
+if (route.path === '/') {
+  await navigateTo('/getting-started');
+}
+
 const { toc } = useAppConfig();
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation');
 
