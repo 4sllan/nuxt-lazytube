@@ -1,6 +1,5 @@
-<script setup lang="ts">
+<script setup>
 import QrcodeVue from 'qrcode.vue';
-//@ts-ignore
 import { payload } from 'pix-payload';
 
 const data = {
