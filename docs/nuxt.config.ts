@@ -11,7 +11,7 @@ export default defineNuxtConfig({
 
   site: {
     url: 'https://4sllan.github.io',
-    name: 'nuxt-lazytube',
+    name: 'Nuxt Lazytube',
   },
 
   devtools: {
