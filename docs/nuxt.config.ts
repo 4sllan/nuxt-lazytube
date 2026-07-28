@@ -9,6 +9,11 @@ export default defineNuxtConfig({
     },
   },
 
+  site: {
+    url: 'https://4sllan.github.io',
+    name: 'Nuxt Lazytube',
+  },
+
   devtools: {
     enabled: true,
   },
@@ -134,7 +139,16 @@ export default defineNuxtConfig({
 
   vite: {
     optimizeDeps: {
-      include: ['@vue/devtools-core', '@vue/devtools-kit'],
+      include: [
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        'pix-payload', // CJS
+        'vue-qrcode-reader',
+      ],
     },
+  },
+
+  ogImage: {
+    zeroRuntime: true,
   },
 });

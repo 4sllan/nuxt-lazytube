@@ -34,7 +34,7 @@ useSeoMeta({
 
 const headline = computed(() => findPageHeadline(navigation?.value, page.value?.path));
 
-defineOgImage('Docs', {
+defineOgImage('ImageDocs.satori', {
   title,
   description,
   headline: headline.value,
